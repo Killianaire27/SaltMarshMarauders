@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salt Marsh Marauders — 25-Week Training Calendar</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=IM+Fell+English:ital@0;1&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:           #080f18;
+    --surface:      #0c1a27;
+    --card:         #101f30;
+    --border:       #1e3a50;
+    --border-light: #2a5068;
+    --text:         #b0ccd8;
+    --text-dim:     #4e7a8e;
+    --text-bright:  #d8eef6;
+    --copper:       #7acbd8;
+    --copper-dim:   #2a5e70;
+
+    --p1: #4a7aaa;
+    --p1-bg: rgba(74,122,170,0.12);
+    --p1-text: #8ab8e0;
+
+    --p2: #3a9a8a;
+    --p2-bg: rgba(58,154,138,0.12);
+    --p2-text: #6acaba;
+
+    --p3: #c87a3a;
+    --p3-bg: rgba(200,122,58,0.12);
+    --p3-text: #e0aa6a;
+
+    --p4: #8a2a50;
+    --p4-bg: rgba(138,42,80,0.12);
+    --p4-text: #c06080;
+
+    --event: #c89a3a;
+    --event-bg: rgba(200,154,58,0.15);
+
+    --adv: #7acbd8;
+    --ret: #c89a3a;
+    --int: #7a9fb8;
+    --fnd: #9a6e4a;
+    --knee: #4aaa7a;
+
+    --ms-armor:  rgba(122,203,216,0.15);
+    --ms-heavy:  rgba(200,122,58,0.15);
+    --ms-kit:    rgba(200,154,58,0.15);
+    --ms-taper:  rgba(138,42,80,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IM Fell English', Georgia, serif;
+    font-size: 15px;
+    line-height: 1.5;
+    background-image:
+      linear-gradient(rgba(30,58,80,0.15) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30,58,80,0.15) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: linear-gradient(170deg, #050c14 0%, #0a1a28 45%, #050c14 100%);
+    border-bottom: 2px solid var(--copper-dim);
+    padding: 2.5rem 2rem 2rem; text-align: center; position: relative; overflow: hidden;
+  }
+  .site-header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(122,203,216,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .header-crest { font-size: 2.2rem; margin-bottom: 0.4rem; opacity: 0.9; filter: drop-shadow(0 0 10px rgba(122,203,216,0.4)); }
+  .site-header h1 { font-family: 'Cinzel', serif; font-weight: 900; font-size: clamp(1.5rem,4vw,2.6rem); color: var(--copper); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.3rem; text-shadow: 0 0 24px rgba(122,203,216,0.25); }
+  .subtitle { font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; color: var(--text-dim); letter-spacing: 0.18em; text-transform: uppercase; }
+  .header-divider { width: 120px; height: 1px; background: linear-gradient(90deg,transparent,var(--copper-dim),transparent); margin: 1rem auto 0.8rem; position: relative; }
+  .header-divider::before { content: '⚓'; position: absolute; top: -0.55rem; left: 50%; transform: translateX(-50%); font-size: 0.85rem; color: var(--copper-dim); background: #080f18; padding: 0 0.3rem; }
+  .event-badge { display: inline-block; background: var(--event-bg); border: 1px solid rgba(200,154,58,0.4); padding: 0.3rem 1.2rem; font-family: 'Share Tech Mono', monospace; font-size: 0.75rem; letter-spacing: 0.14em; color: var(--event); text-transform: uppercase; }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 1300px; margin: 0 auto; padding: 1.5rem; }
+
+  /* ── LEGEND ── */
+  .legend-bar {
+    display: flex; flex-wrap: wrap; gap: 1rem;
+    margin: 1.5rem 0 2rem;
+    padding: 1rem 1.2rem;
+    background: var(--card); border: 1px solid var(--border);
+  }
+  .legend-title { font-family: 'Share Tech Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim); width: 100%; margin-bottom: 0.3rem; }
+  .legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+  .legend-dot.p1 { background: var(--p1); }
+  .legend-dot.p2 { background: var(--p2); }
+  .legend-dot.p3 { background: var(--p3); }
+  .legend-dot.p4 { background: var(--p4); }
+  .legend-dot.ev { background: var(--event); }
+
+  /* ── MONTH HEADERS ── */
+  .month-group { margin-bottom: 2rem; }
+  .month-label {
+    font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-dim); border-bottom: 1px solid var(--border);
+    padding-bottom: 0.4rem; margin-bottom: 0.8rem;
+  }
+  .month-label span { color: var(--copper); opacity: 0.7; margin-right: 0.5rem; }
+
+  /* ── WEEK GRID ── */
+  .week-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0.8rem;
+  }
+
+  /* ── WEEK CARD ── */
+  .week-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-top: 3px solid;
+    padding: 0.8rem 0.9rem;
+    position: relative;
+    transition: border-color 0.15s;
+  }
+  .week-card:hover { border-color: var(--copper-dim); }
+  .week-card.p1 { border-top-color: var(--p1); }
+  .week-card.p2 { border-top-color: var(--p2); }
+  .week-card.p3 { border-top-color: var(--p3); }
+  .week-card.p4 { border-top-color: var(--p4); }
+  .week-card.event-week { background: var(--event-bg); border-color: rgba(200,154,58,0.4); border-top-color: var(--event); }
+
+  /* week number + date */
+  .week-top { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.5rem; }
+  .week-num { font-family: 'Cinzel', serif; font-size: 1.3rem; font-weight: 900; line-height: 1; }
+  .week-card.p1 .week-num { color: var(--p1-text); }
+  .week-card.p2 .week-num { color: var(--p2-text); }
+  .week-card.p3 .week-num { color: var(--p3-text); }
+  .week-card.p4 .week-num { color: var(--p4-text); }
+  .week-card.event-week .week-num { color: var(--event); }
+  .week-dates { font-family: 'Share Tech Mono', monospace; font-size: 0.62rem; color: var(--text-dim); letter-spacing: 0.06em; }
+
+  /* phase badge */
+  .week-phase {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase; padding: 0.1rem 0.4rem;
+    border-radius: 1px; margin-bottom: 0.6rem; display: inline-block;
+  }
+  .week-card.p1 .week-phase { background: var(--p1-bg); color: var(--p1-text); border: 1px solid rgba(74,122,170,0.3); }
+  .week-card.p2 .week-phase { background: var(--p2-bg); color: var(--p2-text); border: 1px solid rgba(58,154,138,0.3); }
+  .week-card.p3 .week-phase { background: var(--p3-bg); color: var(--p3-text); border: 1px solid rgba(200,122,58,0.3); }
+  .week-card.p4 .week-phase { background: var(--p4-bg); color: var(--p4-text); border: 1px solid rgba(138,42,80,0.3); }
+  .week-card.event-week .week-phase { background: var(--event-bg); color: var(--event); border: 1px solid rgba(200,154,58,0.4); }
+
+  /* day pills */
+  .day-pills { display: flex; gap: 0.3rem; margin-bottom: 0.6rem; }
+  .day-pill {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.08em; padding: 0.2rem 0.5rem; border-radius: 2px;
+    border: 1px solid; text-transform: uppercase;
+  }
+  .day-pill.day-a { background: rgba(74,122,170,0.12); color: #6a9ed4; border-color: rgba(74,122,170,0.3); }
+  .day-pill.day-b { background: rgba(58,154,138,0.12); color: #5abcac; border-color: rgba(58,154,138,0.3); }
+  .day-pill.day-c { background: rgba(200,122,58,0.12); color: #d49050; border-color: rgba(200,122,58,0.3); }
+  .day-pill.rest   { background: rgba(30,58,80,0.3); color: var(--text-dim); border-color: var(--border); font-size: 0.6rem; }
+
+  /* day labels */
+  .day-labels { display: flex; gap: 0.3rem; margin-bottom: 0.6rem; }
+  .day-label-item { font-size: 0.68rem; color: var(--text-dim); font-style: italic; }
+
+  /* milestone flags */
+  .milestone {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.6rem; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 0.2rem 0.5rem; margin-top: 0.4rem;
+    display: block; border-left: 2px solid;
+  }
+  .ms-armor  { background: var(--ms-armor); color: var(--copper); border-color: var(--copper); }
+  .ms-heavy  { background: var(--ms-heavy); color: #e0aa6a; border-color: var(--p3); }
+  .ms-kit    { background: var(--ms-kit);   color: var(--event); border-color: var(--event); }
+  .ms-taper  { background: var(--ms-taper); color: var(--p4-text); border-color: var(--p4); }
+  .ms-cond   { background: rgba(122,203,216,0.08); color: var(--adv); border-color: var(--adv); }
+  .ms-special { background: rgba(154,110,74,0.12); color: #d4906a; border-color: var(--fnd); }
+  .ms-event  { background: var(--event-bg); color: var(--event); border-color: var(--event); font-size: 0.65rem; font-style: italic; }
+
+  /* event week special */
+  .event-flag {
+    margin-top: 0.6rem;
+    text-align: center;
+    font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: 700;
+    color: var(--event); letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.5rem;
+    border: 1px solid rgba(200,154,58,0.4);
+    background: rgba(200,154,58,0.08);
+  }
+
+  /* ── TRACKS REMINDER ── */
+  .track-reminder {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.6rem; margin: 1.5rem 0;
+  }
+  .track-chip {
+    padding: 0.6rem 0.8rem; border-left: 3px solid; background: var(--card);
+    font-size: 0.82rem;
+  }
+  .track-chip.adv { border-color: var(--adv); }
+  .track-chip.ret { border-color: var(--ret); }
+  .track-chip.int { border-color: var(--int); }
+  .track-chip.fnd { border-color: var(--fnd); }
+  .track-chip-name { font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.2rem; }
+  .track-chip.adv .track-chip-name { color: var(--adv); }
+  .track-chip.ret .track-chip-name { color: var(--ret); }
+  .track-chip.int .track-chip-name { color: var(--int); }
+  .track-chip.fnd .track-chip-name { color: var(--fnd); }
+  .track-chip-desc { font-size: 0.78rem; color: var(--text-dim); font-style: italic; }
+
+  /* ── DAY FOCUS KEY ── */
+  .focus-key {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    gap: 0.6rem; margin: 1rem 0 2rem;
+  }
+  .focus-item { background: var(--card); border: 1px solid var(--border); padding: 0.8rem 1rem; }
+  .focus-day { font-family: 'Share Tech Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.3rem; }
+  .focus-name { font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: 700; color: var(--text-bright); margin-bottom: 0.2rem; }
+  .focus-desc { font-size: 0.8rem; color: var(--text-dim); font-style: italic; }
+
+  /* ── SECTION HEADER ── */
+  .section-header { margin: 2rem 0 1rem; }
+  .section-label { font-family: 'Share Tech Mono', monospace; font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.3rem; }
+  .section-header h2 { font-family: 'Cinzel', serif; font-weight: 700; font-size: 1.3rem; color: var(--text-bright); letter-spacing: 0.05em; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+  .section-header h2::before { content: '— '; color: var(--copper-dim); }
+
+  /* ── FOOTER ── */
+  .site-footer { margin-top: 3rem; border-top: 2px solid var(--copper-dim); padding: 1.5rem; text-align: center; font-family: 'Share Tech Mono', monospace; font-size: 0.68rem; color: var(--text-dim); letter-spacing: 0.12em; text-transform: uppercase; background: linear-gradient(0deg, #050c14, transparent); }
+  .footer-crest { font-size: 1.5rem; margin-bottom: 0.4rem; opacity: 0.45; }
+
+  @media (max-width: 600px) {
+    .week-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media print {
+    body { background: white; color: black; background-image: none; font-size: 11px; }
+    .site-header { background: white; border-bottom: 2px solid #333; }
+    .site-header h1 { color: #333; text-shadow: none; }
+    .week-card { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-crest">⚓</div>
+  <h1>Training Calendar</h1>
+  <div class="header-divider"></div>
+  <div class="subtitle">Salt Marsh Marauders · Sea Lords · 25 Weeks</div><br>
+  <div class="event-badge">⚔ Weekend Warrior: Olaran — Oct 23–25, 2026 ⚔</div>
+</header>
+
+<div class="container">
+
+  <!-- LEGEND -->
+  <div class="legend-bar">
+    <div class="legend-title">Phase Legend</div>
+    <div class="legend-item"><div class="legend-dot p1"></div><span>Phase I — Foundation (Wk 1–6)</span></div>
+    <div class="legend-item"><div class="legend-dot p2"></div><span>Phase II — Build (Wk 7–14)</span></div>
+    <div class="legend-item"><div class="legend-dot p3"></div><span>Phase III — Peak (Wk 15–21)</span></div>
+    <div class="legend-item"><div class="legend-dot p4"></div><span>Phase IV — Taper (Wk 22–25)</span></div>
+    <div class="legend-item"><div class="legend-dot ev"></div><span>Event Weekend</span></div>
+  </div>
+
+  <!-- TRACK REMINDER -->
+  <div class="section-header"><div class="section-label">Track Reference</div><h2>Your Training Track</h2></div>
+  <div class="track-reminder">
+    <div class="track-chip adv"><div class="track-chip-name">Advanced Track</div><div class="track-chip-desc">Consistent athlete, solid strength + conditioning base</div></div>
+    <div class="track-chip ret"><div class="track-chip-name">Athlete Return Track</div><div class="track-chip-desc">Strong history, returning after significant break</div></div>
+    <div class="track-chip int"><div class="track-chip-name">Intermediate Track</div><div class="track-chip-desc">Reasonably active, no structured program</div></div>
+    <div class="track-chip fnd"><div class="track-chip-name">Foundation Track</div><div class="track-chip-desc">Starting from the beginning — quality over speed</div></div>
+  </div>
+
+  <!-- DAY FOCUS KEY -->
+  <div class="section-header"><div class="section-label">Daily Focus</div><h2>What Each Day Does</h2></div>
+  <div class="focus-key">
+    <div class="focus-item">
+      <div class="focus-day">Day A — "The Anvil"</div>
+      <div class="focus-name">Lower Body + Posterior Chain</div>
+      <div class="focus-desc">Squat, deadlift, hip thrust, calf raises, loaded carries. Builds the legs and hips that don't quit in hour 4.</div>
+    </div>
+    <div class="focus-item">
+      <div class="focus-day">Day B — "The Hammer"</div>
+      <div class="focus-name">Upper Body + Weapon Mechanics</div>
+      <div class="focus-desc">Press, pull, rotational chop, bow draw sim, grip work. Builds the strike, the draw, and the endurance to repeat them all day.</div>
+    </div>
+    <div class="focus-item">
+      <div class="focus-day">Day C — "The Raid"</div>
+      <div class="focus-name">Full Body Battle Circuit</div>
+      <div class="focus-desc">Swings, chops, conditioning, loaded movement. The most event-specific day. Phase 3: wear your kit.</div>
+    </div>
+  </div>
+
+  <!-- CALENDAR WEEKS -->
+  <div class="section-header"><div class="section-label">The Campaign</div><h2>25-Week Schedule</h2></div>
+  <p style="margin-bottom: 1.5rem; color: var(--text-dim); font-style: italic; font-size: 0.88rem;">Dates shown assume a Week 1 start of May 4, 2026. Adjust your week numbers accordingly if starting earlier or later. Milestone flags show when key changes activate.</p>
+
+  <!-- MAY -->
+  <div class="month-group">
+    <div class="month-label"><span>⚓</span> May 2026</div>
+    <div class="week-grid">
+
+      <div class="week-card p1">
+        <div class="week-top"><div class="week-num">01</div><div class="week-dates">May 4–10</div></div>
+        <div class="week-phase">Phase I · Foundation</div>
+        <div class="day-pills">
+          <div class="day-pill day-a">A</div>
+          <div class="day-pill day-b">B</div>
+          <div class="day-pill day-c">C</div>
+        </div>
+        <div class="day-labels">
+          <span style="font-size:0.7rem; color:var(--text-dim); font-style:italic;">Anvil · Hammer · Raid</span>
+        </div>
+        <span class="milestone ms-special">First session — movement quality only</span>
+      </div>
+
+      <div class="week-card p1">
+        <div class="week-top"><div class="week-num">02</div><div class="week-dates">May 11–17</div></div>
+        <div class="week-phase">Phase I · Foundation</div>
+        <div class="day-pills">
+          <div class="day-pill day-a">A</div><div class="day-pill day-b">B</div><div class="day-pill day-c">C</div>
+        </div>
+        <div class="day-labels"><span style="font-size:0.7rem; color:var(--text-dim); font-style:italic;">Anvil · Hammer · Raid</span></div>
+      </div>
+
+      <div class="week-card p1">
+        <div class="week-top"><div class="week-num">03</div><div class="week-dates">May 18–24</div></div>
+        <div class="week-phase">Phase I · Foundation</div>
+        <div class="day-pills">
+          <div class="day-pill day-a">A</div><div class="day-pill day-b">B</div><div class="day-pill day-c">C</div>
+        </div>
+        <div class="day-labels"><span style="font-size:0.7rem; color:var(--text-dim); font-style:italic;">Anvil · Hammer · Raid</span></div>
+      </div>
+
+      <div class="week-card p1">
+        <div class="week-top"><div class="week-num">04</div><div class="week-dates">May 25–31</div></div>
+        <div class="week-phase">Phase I · Foundation</div>
+        <div class="day-pills">
+          <div class="day-pill day-a">A</div><div class="day-pill day-b">B</div><div class="day-pill day-c">C</div>
+        </div>
+        <div class="day-labels"><span style="font-size:0.7rem; color:var(--text-dim); font-style:italic;">Anvil · Hammer · Raid</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JUNE -->
+  <div class="month-group">
+    <div class="month-label"><span>⚓</span> June 2026</div>
+    <div class="week-grid">
+
+      <div class="week-card p1">
+        <div class="week-top"><div class="week-num">05</div><div class="week-dates">Jun 1–7</div></div>
+        <div class="week-phase">Phase I · Foundation</div>
+        <div class="day-pills">
+          <div class="day-pill day-a">A</div><div class="day-pill day-b">B</div><div class="day-pill day-c">C</div>
+        </div>
+        <div class="day-labels"><span style="font-size:0.7rem; color:var(--text-dim); font-style:italic;">Anvil · Hammer · Raid</span></div>
+      </div>
+
+      <div class="week-card p1">
+        <div class="week-top"><div class="week-num">06</div><div class="week-dates">Jun 8–14</div></div>
+        <div class="week-phase">Phase I · Foundation</div>
+        <div class="day-pills">
+          <div class="day-pill day-a">A</div><div class="day-pill day-b">B</div><div class="day-pill day-c">C</div>
+        </div>
+        <div class="day-labels"><span style="font-size:0.7rem; color:var(--text-dim); font-style:italic;">Anvil · Hammer · Raid</span></div>
+        <span class="milestone ms-special">★ Phase I ends — self-assess progress</span>
+      </div>
+
+      <div class="week-card p2">
+        <div class="week-top"><div class="week-num">07</div><div class="week-dates">Jun 15–21</div></div>
+        <div class="week-phase">Phase II · Build</div>
+        <div class="day-pills">
+          <div class="day-pill day-a">A</div><div class="day-pill day-b">B</div><div class="day-pill day-c">C</div>
+        </div>
+        <div class="day-labels"><span style="font-size:0.7rem; color:var(--text-dim); font-style:italic;">Anvil · Hammer · Raid</span></div>
+        <span class="milestone ms-special">Phase II begins — +5–10% on loads</span>
+        <span class="milestone ms-cond">Bow draw sim + Pallof press added (Day B)</span>
+      </div>
+
+      <div class="week-card p2">
+        <div class="week-top"><div class="week-num">08</div><div class="week-dates">Jun 22–28</div></div>
+        <div class="week-phase">Phase II · Build</div>
+        <div class="day-pills">
+          <div class="day-pill day-a">A</div><div class="day-pill day-b">B</div><div class="day-pill day-c">C</div>
+        </div>
+        <div class="day-labels"><span style="font-size:0.7rem; color:var(--text-dim); font-style:italic;">Anvil · Hammer · Raid</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JULY -->
+  <div class="month-group">
+    <div class="month-label"><span>⚓</span> July 2026</div>
+    <div class="week-grid">
+
+      <div class="week-card p2">
+        <div class="week-top"><div class="week-num">09</div><div class="week-dates">Jun 29–Jul 5</div></div>
+        <div class="week-phase">Phase II · Build</div>
+        <div class="day-pills">
+          <div class="day-pill day-a">A</div><div class="day-pill day-b">B</div><div class="day-pill day-c">C</div>
+        </div>
+        <div class="day-labels"><span style="font-size:0.7rem; color:var(--text-dim); font-style:italic;">Anvil · Hammer · Raid</span></div>
+        <span class="milestone ms-armor">Adv/Return: 10–15 lb pack starts Day C</span>
+        <span class="milestone ms-cond">Athlete Return: cond. → Advanced pace by Wk 10</span>
+      </div>
+
+      <div class="week-card p2">
+        <div class="week-top"><div class="week-num">10</div><div class="week-dates">Jul 6–12</div></div>
+        <div class="week-phase">Phase II · Build</div>
+        <div class="day-pills">
+          <div class="day-pill day-a">A</div><div class="day-pill day-b">B</div><div class="day-pill day-c">C</div>
+        </div>
+        <div class="day-labels"><span style="font-size:0.7rem; color:var(--text-dim); font-style:italic;">Anvil · Hammer · Raid</span></div>
+        <span class="milestone ms-armor">Int: 10–15 lb pack starts Day C</span>
+      </div>
+
+      <div class="week-card p2">
+        <div class="week-top"><div class="week-num">11</div><div class="week-dates">Jul 13–19</div></div>
+        <div class="week-phase">Phase II · Build</div>
+        <div class="day-pills">
+          <div class="day-pill day-a">A</div><div class="day-pill day-b">B</div><div class="day-pill day-c">C</div>
+        </div>
+        <div class="day-labels"><span style="font-size:0.7rem; color:var(--text-dim); font-style:italic;">Anvil · Hammer · Raid</span></div>
+      </div>
+
+      <div class="week-card p2">
+        <div class="week-top"><div class="week-num">12</div><div class="week-dates">Jul 20–26</div></div>
+        <div class="week-phase">Phase II · Build</div>
+        <div class="day-pills">
+          <div class="day-pill day-a">A</div><div class="day-pill day-b">B</div><div class="day-pill day-c">C</div>
+        </div>
+        <div class="day-labels"><span style="font-size:0.7rem; color:var(--text-dim); font-style:italic;">Anvil · Hammer · Raid</span></div>
+        <span class="milestone ms-armor">Fnd: 10–15 lb pack starts Day C</span>
+        <span class="milestone ms-special">Fnd: strict press → push press by end of week</span>
+      </div>
+
+      <div class="week-card p2">
+        <div class="week-top"><div class="week-num">13</div><div class="week-dates">Jul 27–Aug 2</div></div>
+        <div class="week-phase">Phase II · Build</div>
+        <div class="day-pills">
+          <div class="day-pill day-a">A</div><div class="day-pill day-b">B</div><div class="day-pill day-c">C</div>
+        </div>
+        <div class="day-labels"><span style="font-size:0.7rem; color:var(--text-dim); font-style:italic;">Anvil · Hammer · Raid</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- AUGUST -->
+  <div class="month-group">
+    <div class="month-label"><span>⚓</span> August 2026</div>
+    <div class="week-grid">
+
+      <div class="week-card p2">
+        <div class="week-top"><div class="week-num">14</div><div class="week-dates">Aug 3–9</div></div>
+        <div class="week-phase">Phase II · Build</div>
+        <div class="day-pills">
+          <div class="day-pill day-a">A</div><div class="day-pill day-b">B</div><div class="day-pill day-c">C</div>
+        </div>
+        <div class="day-labels"><span style="font-size:0.7rem; color:var(--text-dim); font-style:italic;">Anvil · Hammer · Raid</span></div>
+        <span class="milestone ms-special">★ Phase II ends — assess strength gains</span>
+      </div>
+
+      <div class="week-card p3">
+        <div class="week-top"><div class="week-num">15</div><div class="week-dates">Aug 10–16</div></div>
+        <div class="week-phase">Phase III · Peak</div>
+        <div class="day-pills">
+          <div class="day-pill day-a">A</div><div class="day-pill day-b">B</div><div class="day-pill day-c">C</div>
+        </div>
+        <div class="day-labels"><span style="font-size:0.7rem; color:var(--text-dim); font-style:italic;">Anvil · Hammer · Raid</span></div>
+        <span class="milestone ms-heavy">Adv/Return: pack → 15–20 lbs</span>
+        <span class="milestone ms-cond">Day A conditioning with pack (Adv/Return)</span>
+      </div>
+
+      <div class="week-card p3">
+        <div class="week-top"><div class="week-num">16</div><div class="week-dates">Aug 17–23</div></div>
+        <div class="week-phase">Phase III · Peak</div>
+        <div class="day-pills">
+          <div class="day-pill day-a">A</div><div class="day-pill day-b">B</div><div class="day-pill day-c">C</div>
+        </div>
+        <div class="day-labels"><span style="font-size:0.7rem; color:var(--text-dim); font-style:italic;">Anvil · Hammer · Raid</span></div>
+        <span class="milestone ms-cond">Int: Day A conditioning with pack begins</span>
+      </div>
+
+      <div class="week-card p3">
+        <div class="week-top"><div class="week-num">17</div><div class="week-dates">Aug 24–30</div></div>
+        <div class="week-phase">Phase III · Peak</div>
+        <div class="day-pills">
+          <div class="day-pill day-a">A</div><div class="day-pill day-b">B</div><div class="day-pill day-c">C</div>
+        </div>
+        <div class="day-labels"><span style="font-size:0.7rem; color:var(--text-dim); font-style:italic;">Anvil · Hammer · Raid</span></div>
+        <span class="milestone ms-special">Battle Conditioning Finisher active (Day C)</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SEPTEMBER -->
+  <div class="month-group">
+    <div class="month-label"><span>⚓</span> September 2026</div>
+    <div class="week-grid">
+
+      <div class="week-card p3">
+        <div class="week-top"><div class="week-num">18</div><div class="week-dates">Aug 31–Sep 6</div></div>
+        <div class="week-phase">Phase III · Peak</div>
+        <div class="day-pills">
+          <div class="day-pill day-a">A</div><div class="day-pill day-b">B</div><div class="day-pill day-c">C</div>
+        </div>
+        <div class="day-labels"><span style="font-size:0.7rem; color:var(--text-dim); font-style:italic;">Anvil · Hammer · Raid</span></div>
+        <span class="milestone ms-cond">Fnd: Day A conditioning with pack begins</span>
+        <span class="milestone ms-heavy">Fnd: pack → 10–15 lbs (cap)</span>
+      </div>
+
+      <div class="week-card p3">
+        <div class="week-top"><div class="week-num">19</div><div class="week-dates">Sep 7–13</div></div>
+        <div class="week-phase">Phase III · Peak</div>
+        <div class="day-pills">
+          <div class="day-pill day-a">A</div><div class="day-pill day-b">B</div><div class="day-pill day-c">C</div>
+        </div>
+        <div class="day-labels"><span style="font-size:0.7rem; color:var(--text-dim); font-style:italic;">Anvil · Hammer · Raid</span></div>
+        <span class="milestone ms-kit">Wear actual kit on Day C if you have it</span>
+      </div>
+
+      <div class="week-card p3">
+        <div class="week-top"><div class="week-num">20</div><div class="week-dates">Sep 14–20</div></div>
+        <div class="week-phase">Phase III · Peak</div>
+        <div class="day-pills">
+          <div class="day-pill day-a">A</div><div class="day-pill day-b">B</div><div class="day-pill day-c">C</div>
+        </div>
+        <div class="day-labels"><span style="font-size:0.7rem; color:var(--text-dim); font-style:italic;">Anvil · Hammer · Raid</span></div>
+        <span class="milestone ms-kit">Kit on Day C — full gambeson + partial armor</span>
+        <span class="milestone ms-special">★ Milestone check-in — Foundation track</span>
+      </div>
+
+      <div class="week-card p3">
+        <div class="week-top"><div class="week-num">21</div><div class="week-dates">Sep 21–27</div></div>
+        <div class="week-phase">Phase III · Peak</div>
+        <div class="day-pills">
+          <div class="day-pill day-a">A</div><div class="day-pill day-b">B</div><div class="day-pill day-c">C</div>
+        </div>
+        <div class="day-labels"><span style="font-size:0.7rem; color:var(--text-dim); font-style:italic;">Anvil · Hammer · Raid</span></div>
+        <span class="milestone ms-special">★ Phase III ends — final peak session</span>
+        <span class="milestone ms-taper">Taper begins next week</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- OCTOBER -->
+  <div class="month-group">
+    <div class="month-label"><span>⚓</span> October 2026 — Final Approach</div>
+    <div class="week-grid">
+
+      <div class="week-card p4">
+        <div class="week-top"><div class="week-num">22</div><div class="week-dates">Sep 28–Oct 4</div></div>
+        <div class="week-phase">Phase IV · Taper</div>
+        <div class="day-pills">
+          <div class="day-pill day-a">A</div><div class="day-pill day-b">B</div><div class="day-pill day-c">C</div>
+        </div>
+        <div class="day-labels"><span style="font-size:0.7rem; color:var(--text-dim); font-style:italic;">Anvil · Hammer · Raid</span></div>
+        <span class="milestone ms-taper">60% volume · same weights · skip finishers</span>
+      </div>
+
+      <div class="week-card p4">
+        <div class="week-top"><div class="week-num">23</div><div class="week-dates">Oct 5–11</div></div>
+        <div class="week-phase">Phase IV · Taper</div>
+        <div class="day-pills">
+          <div class="day-pill day-a">A</div><div class="day-pill day-b">B</div><div class="day-pill day-c">C</div>
+        </div>
+        <div class="day-labels"><span style="font-size:0.7rem; color:var(--text-dim); font-style:italic;">Anvil · Hammer · Raid</span></div>
+        <span class="milestone ms-taper">60% volume · same weights · skip finishers</span>
+      </div>
+
+      <div class="week-card p4">
+        <div class="week-top"><div class="week-num">24</div><div class="week-dates">Oct 12–18</div></div>
+        <div class="week-phase">Phase IV · Taper</div>
+        <div class="day-pills">
+          <div class="day-pill day-a">A</div><div class="day-pill day-b">B</div><div class="day-pill rest">Rest</div>
+        </div>
+        <div class="day-labels"><span style="font-size:0.7rem; color:var(--text-dim); font-style:italic;">Anvil · Hammer · No Day C</span></div>
+        <span class="milestone ms-taper">2 sessions only · 50% volume · sleep priority</span>
+      </div>
+
+      <div class="week-card event-week">
+        <div class="week-top"><div class="week-num">25</div><div class="week-dates">Oct 19–25</div></div>
+        <div class="week-phase">Event Week</div>
+        <div class="day-pills">
+          <div class="day-pill day-a">A</div><div class="day-pill rest">Rest</div><div class="day-pill rest">Rest</div>
+        </div>
+        <div class="day-labels"><span style="font-size:0.7rem; color:var(--text-dim); font-style:italic;">1 light session Mon/Tue only</span></div>
+        <span class="milestone ms-taper">30% volume · light movement only · then rest</span>
+        <span class="milestone ms-kit">Pre-load hydration night before event</span>
+        <div class="event-flag">⚔ Oct 23–25: Weekend Warrior: Olaran ⚔</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- KEY MILESTONES SUMMARY -->
+  <div class="section-header"><div class="section-label">Quick Reference</div><h2>Key Milestones</h2></div>
+  <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap:0.6rem; margin-bottom:2rem;">
+
+    <div style="background:var(--card); border:1px solid var(--border); padding:0.8rem 1rem;">
+      <div style="font-family:'Share Tech Mono',monospace; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-dim); margin-bottom:0.4rem;">Week 6</div>
+      <div style="font-size:0.88rem;">Phase I ends. Self-assess — how are movement patterns? Foundation track: your first milestone check-in.</div>
+    </div>
+
+    <div style="background:var(--card); border:1px solid var(--border); padding:0.8rem 1rem;">
+      <div style="font-family:'Share Tech Mono',monospace; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-dim); margin-bottom:0.4rem;">Week 7</div>
+      <div style="font-size:0.88rem;">Phase II begins. Increase weights 5–10%. Bow draw simulation and Pallof press added to Day B.</div>
+    </div>
+
+    <div style="background:var(--card); border:1px solid var(--border); padding:0.8rem 1rem;">
+      <div style="font-family:'Share Tech Mono',monospace; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-dim); margin-bottom:0.4rem;">Weeks 9–12</div>
+      <div style="font-size:0.88rem;">Armor sim begins on Day C. Advanced/Return: Wk 9. Intermediate: Wk 10. Foundation: Wk 12.</div>
+    </div>
+
+    <div style="background:var(--card); border:1px solid var(--border); padding:0.8rem 1rem;">
+      <div style="font-family:'Share Tech Mono',monospace; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-dim); margin-bottom:0.4rem;">Week 10</div>
+      <div style="font-size:0.88rem;">Athlete Return track: conditioning progresses to Advanced pace. Not before this week.</div>
+    </div>
+
+    <div style="background:var(--card); border:1px solid var(--border); padding:0.8rem 1rem;">
+      <div style="font-family:'Share Tech Mono',monospace; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-dim); margin-bottom:0.4rem;">Week 14</div>
+      <div style="font-size:0.88rem;">Phase II ends. Assess strength gains. Foundation track: second milestone check-in.</div>
+    </div>
+
+    <div style="background:var(--card); border:1px solid var(--border); padding:0.8rem 1rem;">
+      <div style="font-family:'Share Tech Mono',monospace; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-dim); margin-bottom:0.4rem;">Week 15</div>
+      <div style="font-size:0.88rem;">Phase III begins. Pack weight → 15–20 lbs (Adv/Return). Day A conditioning now with pack. Battle Conditioning Finisher added to Day C.</div>
+    </div>
+
+    <div style="background:var(--card); border:1px solid var(--border); padding:0.8rem 1rem;">
+      <div style="font-family:'Share Tech Mono',monospace; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-dim); margin-bottom:0.4rem;">Weeks 19–21</div>
+      <div style="font-size:0.88rem;">Wear actual gambeson + partial kit on Day C. If kit isn't ready yet, pack stays at max weight.</div>
+    </div>
+
+    <div style="background:var(--card); border:1px solid var(--border); padding:0.8rem 1rem;">
+      <div style="font-family:'Share Tech Mono',monospace; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-dim); margin-bottom:0.4rem;">Week 20</div>
+      <div style="font-size:0.88rem;">Foundation track: final milestone check-in. Compare to your Week 1 and Week 6 baselines.</div>
+    </div>
+
+    <div style="background:var(--card); border:1px solid var(--border); padding:0.8rem 1rem;">
+      <div style="font-family:'Share Tech Mono',monospace; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-dim); margin-bottom:0.4rem;">Week 22</div>
+      <div style="font-size:0.88rem;">Taper begins. Cut to 60% volume — same weights, fewer sets. Drop all conditioning finishers.</div>
+    </div>
+
+    <div style="background:var(--card); border:1px solid var(--border); padding:0.8rem 1rem;">
+      <div style="font-family:'Share Tech Mono',monospace; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-dim); margin-bottom:0.4rem;">Week 24</div>
+      <div style="font-size:0.88rem;">Drop to 2 sessions only (Day A + Day B). Skip Day C entirely. Prioritize sleep and mobility.</div>
+    </div>
+
+    <div style="background:var(--card); border:1px solid var(--border); padding:0.8rem 1rem;">
+      <div style="font-family:'Share Tech Mono',monospace; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-dim); margin-bottom:0.4rem;">Week 25 (Event Week)</div>
+      <div style="font-size:0.88rem;">One light full-body session Mon or Tue. 30% volume, light weight. Then rest, eat well, sleep 8+ hours, and pre-hydrate. Show up ready.</div>
+    </div>
+
+    <div style="background:var(--event-bg); border:1px solid rgba(200,154,58,0.4); padding:0.8rem 1rem;">
+      <div style="font-family:'Share Tech Mono',monospace; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--event); margin-bottom:0.4rem;">Oct 23–25 · The Event</div>
+      <div style="font-size:0.88rem; color:var(--event);">Weekend Warrior: Olaran. 25 weeks of work. Three days of operations. The Salt Marsh Marauders raid.</div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <div class="footer-crest">⚓</div>
+  <div>Salt Marsh Marauders · Sea Lords · Weekend Warrior: Olaran · Oct 23–25, 2026</div>
+  <div style="margin-top:0.3rem; opacity:0.5; font-style:italic;">Train hard. Fight smart. Leave nothing on the field.</div>
+</footer>
+
+</body>
+</html>

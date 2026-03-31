@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salt Marsh Marauders — 25-Week Battle Prep</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=IM+Fell+English:ital@0;1&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* ── Sea Lord Palette ── */
+    --bg:           #080f18;
+    --surface:      #0c1a27;
+    --card:         #101f30;
+    --card-alt:     #152536;
+    --border:       #1e3a50;
+    --border-light: #2a5068;
+    --text:         #b0ccd8;
+    --text-dim:     #4e7a8e;
+    --text-bright:  #d8eef6;
+
+    /* oxidized sea-copper — replaces gold */
+    --copper:       #7acbd8;
+    --copper-dim:   #2a5e70;
+    --copper-deep:  #1a3e50;
+
+    /* track colours */
+    --adv:          #7acbd8;   /* bright sea-teal    */
+    --adv-bg:       rgba(122,203,216,0.10);
+    --adv-border:   rgba(122,203,216,0.35);
+
+    --ret:          #c89a3a;   /* storm amber        */
+    --ret-bg:       rgba(200,154,58,0.10);
+    --ret-border:   rgba(200,154,58,0.35);
+
+    --int:          #7a9fb8;   /* grey-blue slate    */
+    --int-bg:       rgba(122,159,184,0.10);
+    --int-border:   rgba(122,159,184,0.30);
+
+    --fnd:          #9a6e4a;   /* barnacle rust      */
+    --fnd-bg:       rgba(154,110,74,0.12);
+    --fnd-border:   rgba(154,110,74,0.38);
+
+    --knee:         #4aaa7a;   /* sea-green          */
+    --knee-bg:      rgba(74,170,122,0.10);
+    --knee-border:  rgba(74,170,122,0.35);
+
+    /* phase colours */
+    --p1: #4a7aaa;   /* steel ocean   */
+    --p2: #3a9a8a;   /* kelp teal     */
+    --p3: #c87a3a;   /* storm copper  */
+    --p4: #8a2a50;   /* deep crimson  */
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IM Fell English', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.7;
+    /* subtle deep-sea grid texture */
+    background-image:
+      linear-gradient(rgba(30,58,80,0.18) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30,58,80,0.18) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: linear-gradient(170deg, #050c14 0%, #0a1a28 45%, #050c14 100%);
+    border-bottom: 2px solid var(--copper-dim);
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 50% -10%, rgba(122,203,216,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 20% 100%, rgba(26,62,80,0.4) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(26,62,80,0.4) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  /* wave line decoration */
+  .site-header::after {
+    content: '〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    font-size: 0.6rem; letter-spacing: -0.1em;
+    color: var(--copper-dim); opacity: 0.4;
+    overflow: hidden; white-space: nowrap;
+  }
+  .header-crest {
+    font-size: 2.8rem; margin-bottom: 0.6rem; opacity: 0.9;
+    filter: drop-shadow(0 0 12px rgba(122,203,216,0.4));
+  }
+  .site-header h1 {
+    font-family: 'Cinzel', serif; font-weight: 900;
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
+    color: var(--copper);
+    letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.1;
+    margin-bottom: 0.4rem;
+    text-shadow: 0 0 30px rgba(122,203,216,0.3);
+  }
+  .subtitle {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.82rem;
+    color: var(--text-dim); letter-spacing: 0.18em; text-transform: uppercase;
+  }
+  .header-divider {
+    width: 140px; height: 1px; margin: 1.2rem auto 1rem;
+    background: linear-gradient(90deg, transparent, var(--copper-dim), transparent);
+    position: relative;
+  }
+  .header-divider::before {
+    content: '⚓';
+    position: absolute; top: -0.6rem; left: 50%; transform: translateX(-50%);
+    font-size: 0.9rem; color: var(--copper-dim); background: #080f18; padding: 0 0.4rem;
+  }
+  .event-badge {
+    display: inline-block;
+    background: rgba(122,203,216,0.06);
+    border: 1px solid var(--adv-border);
+    padding: 0.35rem 1.4rem;
+    font-family: 'Share Tech Mono', monospace; font-size: 0.78rem;
+    letter-spacing: 0.14em; color: var(--copper); text-transform: uppercase;
+  }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+  .section-header { padding: 2.5rem 0 0; margin-bottom: 1.5rem; }
+  .section-label {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.68rem;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.4rem;
+  }
+  .section-header h2 {
+    font-family: 'Cinzel', serif; font-weight: 700; font-size: 1.55rem;
+    color: var(--text-bright); letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border); padding-bottom: 0.6rem;
+  }
+  .section-header h2::before { content: '— '; color: var(--copper-dim); }
+
+  /* ── STATS ── */
+  .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 1rem; margin: 1rem 0; }
+  .info-stat {
+    background: var(--card); border: 1px solid var(--border);
+    border-top: 2px solid var(--copper-dim);
+    padding: 1rem; text-align: center;
+  }
+  .stat-value {
+    font-family: 'Cinzel', serif; font-size: 2.2rem; font-weight: 900;
+    color: var(--copper); line-height: 1; margin-bottom: 0.2rem;
+    text-shadow: 0 0 20px rgba(122,203,216,0.25);
+  }
+  .stat-label { font-family: 'Share Tech Mono', monospace; font-size: 0.66rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--text-dim); }
+
+  /* ── PILLARS ── */
+  .pillar { margin: 0.4rem 0; padding: 0.5rem 1rem; border-left: 2px solid var(--border); background: rgba(122,203,216,0.02); }
+  .pillar strong { color: var(--text-bright); }
+
+  /* ── TRACKS ── */
+  .tier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1rem; margin: 1.5rem 0; }
+  .tier-card { background: var(--card); border-left: 3px solid; padding: 1rem 1.2rem; }
+  .tier-card.adv { border-color: var(--adv); } .tier-card.ret { border-color: var(--ret); }
+  .tier-card.int { border-color: var(--int); } .tier-card.fnd { border-color: var(--fnd); }
+  .tier-name { font-family: 'Cinzel', serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.3rem; }
+  .tier-card.adv .tier-name { color: var(--adv); } .tier-card.ret .tier-name { color: var(--ret); }
+  .tier-card.int .tier-name { color: var(--int); } .tier-card.fnd .tier-name { color: var(--fnd); }
+  .tier-desc { font-size: 0.88rem; color: var(--text-dim); line-height: 1.5; }
+
+  /* ── BADGES ── */
+  .badge {
+    display: inline-block; font-family: 'Share Tech Mono', monospace;
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.12rem 0.45rem; border-radius: 1px; margin: 0 2px; vertical-align: middle; white-space: nowrap;
+  }
+  .badge-a { background: var(--adv-bg); color: var(--adv); border: 1px solid var(--adv-border); }
+  .badge-r { background: var(--ret-bg); color: var(--ret); border: 1px solid var(--ret-border); }
+  .badge-i { background: var(--int-bg); color: var(--int); border: 1px solid var(--int-border); }
+  .badge-f { background: var(--fnd-bg); color: var(--fnd); border: 1px solid var(--fnd-border); }
+  .badge-k { background: var(--knee-bg); color: var(--knee); border: 1px solid var(--knee-border); }
+
+  /* ── PHASE TABS ── */
+  .phase-tabs { display: flex; gap: 0.5rem; margin: 1.5rem 0 0; flex-wrap: wrap; }
+  .phase-tab-btn {
+    background: var(--card); border: 1px solid var(--border);
+    color: var(--text-dim); font-family: 'Cinzel', serif; font-size: 0.8rem;
+    font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 0.6rem 1rem; cursor: pointer; transition: all 0.2s;
+    flex: 1; min-width: 130px; text-align: center;
+  }
+  .phase-tab-btn:hover { border-color: var(--copper-dim); color: var(--text); }
+  .phase-tab-btn.active { color: #060e18; font-weight: 700; }
+  .phase-tab-btn[data-phase="1"].active { background: var(--p1); border-color: var(--p1); }
+  .phase-tab-btn[data-phase="2"].active { background: var(--p2); border-color: var(--p2); }
+  .phase-tab-btn[data-phase="3"].active { background: var(--p3); border-color: var(--p3); }
+  .phase-tab-btn[data-phase="4"].active { background: var(--p4); border-color: var(--p4); }
+
+  /* ── PHASE PANELS ── */
+  .phase-panel { display: none; } .phase-panel.active { display: block; }
+  .phase-header {
+    background: linear-gradient(135deg, var(--surface), var(--card));
+    border: 1px solid var(--border); border-left: 4px solid;
+    padding: 1.4rem 1.8rem; margin: 1rem 0 1.5rem;
+  }
+  .phase-panel[data-phase="1"] .phase-header { border-left-color: var(--p1); }
+  .phase-panel[data-phase="2"] .phase-header { border-left-color: var(--p2); }
+  .phase-panel[data-phase="3"] .phase-header { border-left-color: var(--p3); }
+  .phase-panel[data-phase="4"] .phase-header { border-left-color: var(--p4); }
+  .phase-header h3 {
+    font-family: 'Cinzel', serif; font-weight: 700; font-size: 1.2rem;
+    color: var(--text-bright); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.3rem;
+  }
+  .phase-weeks { font-family: 'Share Tech Mono', monospace; font-size: 0.72rem; color: var(--text-dim); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .phase-goal { font-style: italic; color: var(--text-dim); font-size: 0.95rem; }
+  .phase-keys { margin-top: 0.8rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .phase-key { font-family: 'Share Tech Mono', monospace; font-size: 0.68rem; background: rgba(30,58,80,0.6); border: 1px solid var(--border); padding: 0.2rem 0.6rem; color: var(--text-dim); letter-spacing: 0.07em; text-transform: uppercase; }
+
+  /* ── DAY BLOCKS ── */
+  .day-block { background: var(--card); border: 1px solid var(--border); margin-bottom: 1.1rem; overflow: hidden; }
+  .day-header {
+    background: linear-gradient(90deg, rgba(30,58,80,0.5) 0%, transparent 100%);
+    border-bottom: 1px solid var(--border); padding: 1rem 1.4rem;
+    cursor: pointer; display: flex; align-items: center; justify-content: space-between; user-select: none;
+  }
+  .day-header:hover { background: linear-gradient(90deg, rgba(42,80,104,0.6) 0%, rgba(42,80,104,0.1) 100%); }
+  .day-title-group { display: flex; align-items: center; gap: 0.9rem; }
+  .day-letter { font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 900; color: var(--copper); line-height: 1; text-shadow: 0 0 16px rgba(122,203,216,0.3); }
+  .day-title { font-family: 'Cinzel', serif; font-size: 0.98rem; font-weight: 700; color: var(--text-bright); letter-spacing: 0.06em; text-transform: uppercase; }
+  .day-subtitle { font-size: 0.82rem; color: var(--text-dim); font-style: italic; margin-top: 0.1rem; }
+  .day-toggle { font-family: 'Share Tech Mono', monospace; font-size: 0.72rem; color: var(--text-dim); letter-spacing: 0.08em; }
+  .day-body { padding: 1.4rem; display: none; } .day-body.open { display: block; }
+
+  /* ── WARM UP ── */
+  .warmup-block { background: rgba(26,62,80,0.25); border-left: 2px solid var(--border); padding: 0.8rem 1rem; margin-bottom: 1.2rem; }
+  .warmup-label { font-family: 'Share Tech Mono', monospace; font-size: 0.65rem; letter-spacing: 0.18em; color: var(--text-dim); text-transform: uppercase; margin-bottom: 0.4rem; }
+  .warmup-block ul { list-style: none; padding: 0; }
+  .warmup-block li { padding: 0.15rem 0; color: var(--text-dim); font-size: 0.9rem; }
+  .warmup-block li::before { content: '~ '; opacity: 0.5; }
+
+  /* ── EXERCISE TABLE ── */
+  .ex-table { width: 100%; border-collapse: collapse; margin-bottom: 1.2rem; font-size: 0.87rem; }
+  .ex-table thead tr { border-bottom: 2px solid var(--border); }
+  .ex-table th { font-family: 'Share Tech Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); padding: 0.5rem 0.7rem; text-align: left; white-space: nowrap; }
+  .ex-table td { padding: 0.55rem 0.7rem; border-bottom: 1px solid rgba(30,58,80,0.6); vertical-align: top; line-height: 1.45; }
+  .ex-table tr:last-child td { border-bottom: none; }
+  .ex-table tr:hover td { background: rgba(122,203,216,0.03); }
+  .ex-name { font-weight: 600; color: var(--text-bright); font-size: 0.9rem; }
+  .ex-note { font-size: 0.78rem; color: var(--text-dim); font-style: italic; display: block; margin-top: 0.1rem; }
+  .td-a { color: var(--adv); } .td-r { color: var(--ret); }
+  .td-i { color: var(--int); } .td-f { color: var(--fnd); }
+  .td-k { color: var(--knee); font-style: italic; }
+
+  /* ── CONDITIONING BLOCK ── */
+  .cond-block { background: rgba(26,62,80,0.2); border: 1px solid var(--border); padding: 1rem 1.2rem; margin-bottom: 1rem; }
+  .cond-label { font-family: 'Share Tech Mono', monospace; font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.6rem; }
+  .cond-rows { display: flex; flex-direction: column; gap: 0.4rem; }
+  .cond-row { display: flex; align-items: baseline; gap: 0.6rem; font-size: 0.88rem; flex-wrap: wrap; }
+
+  /* ── CALLOUTS ── */
+  .callout { padding: 1rem 1.2rem; margin: 1.2rem 0; border-left: 3px solid; background: rgba(12,26,39,0.8); font-size: 0.9rem; }
+  .callout.warn  { border-color: var(--fnd); }
+  .callout.tip   { border-color: var(--p2); }
+  .callout.knee  { border-color: var(--knee); background: rgba(74,170,122,0.06); }
+  .callout-title { font-family: 'Cinzel', serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .callout.warn .callout-title  { color: var(--fnd); }
+  .callout.tip .callout-title   { color: var(--p2); }
+  .callout.knee .callout-title  { color: var(--knee); }
+  .callout ul { padding-left: 1.2rem; } .callout li { margin: 0.3rem 0; }
+
+  /* ── CIRCUIT ── */
+  .circuit-block { background: rgba(10,22,34,0.7); border: 1px solid var(--border); padding: 1rem 1.2rem; margin-bottom: 1rem; }
+  .circuit-title { font-family: 'Share Tech Mono', monospace; font-size: 0.67rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.8rem; }
+  .circuit-steps { counter-reset: cs; }
+  .circuit-step { counter-increment: cs; display: grid; grid-template-columns: 1.4rem 1fr; gap: 0.5rem; padding: 0.45rem 0; border-bottom: 1px solid rgba(30,58,80,0.5); font-size: 0.87rem; }
+  .circuit-step:last-child { border-bottom: none; }
+  .circuit-step::before { content: counter(cs); font-family: 'Share Tech Mono', monospace; font-size: 0.72rem; color: var(--copper); opacity: 0.7; margin-top: 0.1rem; }
+  .step-content { display: flex; flex-wrap: wrap; gap: 0.3rem; align-items: baseline; width: 100%; }
+  .step-ex { font-weight: 600; color: var(--text-bright); width: 100%; }
+  .step-tiers { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+
+  /* ── ARMOR TIMELINE ── */
+  .armor-timeline { display: flex; flex-direction: column; gap: 0.6rem; margin: 1rem 0; }
+  .armor-row { display: flex; align-items: center; gap: 1rem; }
+  .armor-weeks { font-family: 'Share Tech Mono', monospace; font-size: 0.72rem; color: var(--text-dim); min-width: 90px; letter-spacing: 0.07em; }
+  .armor-bar-wrap { flex: 1; background: var(--surface); height: 24px; display: flex; align-items: center; border: 1px solid var(--border); }
+  .armor-bar-fill { height: 100%; display: flex; align-items: center; padding-left: 0.6rem; font-size: 0.72rem; font-family: 'Share Tech Mono', monospace; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; }
+  .ab0 { width: 20%; background: #1a2e3e; color: var(--text-dim); }
+  .ab2 { width: 60%; background: #1e4a4a; color: #7acbd8; }
+  .ab3 { width: 80%; background: #3a4010; color: #c8ba3a; }
+  .ab4 { width: 100%; background: linear-gradient(90deg, #1a4a5a, #2a6a7a); color: #a0e8f0; }
+
+  /* ── SPECIAL NOTES ── */
+  .special-notes { border: 1px solid var(--border); margin: 1.5rem 0; overflow: hidden; }
+  .special-notes-header { background: rgba(122,203,216,0.06); border-bottom: 1px solid var(--border); padding: 0.8rem 1.2rem; font-family: 'Cinzel', serif; font-size: 0.88rem; font-weight: 700; color: var(--copper); letter-spacing: 0.07em; text-transform: uppercase; }
+  .special-notes-body { padding: 1.2rem; }
+  .special-notes-body p { margin-bottom: 0.8rem; font-size: 0.9rem; }
+  .special-notes-body ul { padding-left: 1.2rem; }
+  .special-notes-body li { margin: 0.3rem 0; font-size: 0.88rem; color: var(--text-dim); }
+  .special-notes-body li strong { color: var(--text); }
+
+  /* ── EQUIPMENT ── */
+  .equip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 1rem; margin: 1rem 0; }
+  .equip-card { background: var(--card); border: 1px solid var(--border); padding: 1rem; }
+  .equip-category { font-family: 'Cinzel', serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--copper); margin-bottom: 0.6rem; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; }
+  .equip-card ul { list-style: none; padding: 0; }
+  .equip-card li { font-size: 0.87rem; padding: 0.25rem 0; border-bottom: 1px solid rgba(30,58,80,0.5); display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem; }
+  .equip-card li:last-child { border-bottom: none; }
+  .equip-card li.note { display: block; font-size: 0.8rem; color: var(--text-dim); border: none; font-style: italic; }
+  .equip-price { font-family: 'Share Tech Mono', monospace; font-size: 0.72rem; color: var(--p2); white-space: nowrap; }
+
+  /* ── TAPER TABLE ── */
+  .taper-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; margin-bottom: 1.2rem; }
+  .taper-table th { font-family: 'Share Tech Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); padding: 0.5rem 0.7rem; text-align: left; border-bottom: 2px solid var(--border); }
+  .taper-table td { padding: 0.55rem 0.7rem; border-bottom: 1px solid rgba(30,58,80,0.5); vertical-align: top; }
+  .taper-table tr:last-child td { border-bottom: none; }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    margin-top: 4rem; border-top: 2px solid var(--copper-dim);
+    padding: 2rem; text-align: center;
+    font-family: 'Share Tech Mono', monospace; font-size: 0.7rem;
+    color: var(--text-dim); letter-spacing: 0.12em; text-transform: uppercase;
+    background: linear-gradient(0deg, #050c14, transparent);
+  }
+  .footer-crest { font-size: 1.8rem; margin-bottom: 0.5rem; opacity: 0.5; }
+
+  @media (max-width: 640px) {
+    .ex-table th:nth-child(5), .ex-table td:nth-child(5) { display: none; }
+    .phase-tab-btn { font-size: 0.7rem; padding: 0.5rem 0.5rem; min-width: 90px; }
+  }
+  @media print {
+    body { background: white; color: black; background-image: none; }
+    .phase-tabs { display: none; }
+    .phase-panel { display: block !important; }
+    .day-body { display: block !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-crest">⚓</div>
+  <h1>Salt Marsh Marauders</h1>
+  <div class="header-divider"></div>
+  <div class="subtitle">25-Week Battle Preparation · Sea Lords</div><br>
+  <div class="event-badge">⚔ Weekend Warrior: Olaran — Oct 23–25, 2026 ⚔</div>
+</header>
+
+<div class="container">
+
+  <!-- OVERVIEW -->
+  <div class="section-header"><div class="section-label">Mission Brief</div><h2>Program Overview</h2></div>
+  <div class="info-grid">
+    <div class="info-stat"><div class="stat-value">25</div><div class="stat-label">Weeks of Training</div></div>
+    <div class="info-stat"><div class="stat-value">3</div><div class="stat-label">Days Per Week</div></div>
+    <div class="info-stat"><div class="stat-value">4</div><div class="stat-label">Training Tracks</div></div>
+    <div class="info-stat"><div class="stat-value">3</div><div class="stat-label">Days of Operations</div></div>
+  </div>
+  <p style="margin: 1rem 0 0.6rem;">Built for the <strong>Sea Lords Raider role</strong> — heavy shock troops running two-handed weapons and bows, closing distance fast and hitting hard. Three training pillars:</p>
+  <div class="pillar" style="margin-top:0.5rem;"><strong>Explosive Rotational Power:</strong> Two-handed weapons live and die by hip-to-shoulder rotation. The strike is generated from the ground up — hips, core, then arms.</div>
+  <div class="pillar"><strong>Loaded Endurance:</strong> Gambeson + chainmail + leather at 15–20 lbs means sustained effort under armor weight across 5+ hour operation blocks for three straight days.</div>
+  <div class="pillar" style="margin-bottom:1.2rem;"><strong>Multi-Day Recovery:</strong> Day 1 is easy. Day 3 is where battles are decided. This program conditions the body to still hit hard on day three.</div>
+
+  <!-- TRACKS -->
+  <div class="section-header"><div class="section-label">Choose Your Track</div><h2>Training Tracks</h2></div>
+  <p style="margin-bottom: 1rem; color: var(--text-dim);">Every exercise has a prescription for each track. Find where you honestly are today — not where you want to be — and work that column. <strong style="color: var(--text);">The goal is to arrive at the event healthy and ready to fight. Every track achieves that.</strong></p>
+  <div class="tier-grid">
+    <div class="tier-card adv">
+      <div class="tier-name">Advanced Track</div>
+      <div class="tier-desc">Consistently training with a solid base of strength and conditioning. Program taken as written at full volume and loads.</div>
+    </div>
+    <div class="tier-card ret">
+      <div class="tier-name">Athlete Return Track</div>
+      <div class="tier-desc">Strong athletic background, returning after a significant break. Strength ceiling is high and will come back fast — conditioning is ramped deliberately to protect connective tissue.</div>
+    </div>
+    <div class="tier-card int">
+      <div class="tier-name">Intermediate Track</div>
+      <div class="tier-desc">Reasonably active but without a structured program. Work at roughly 80% of Advanced volume and weight. Focus on building the habit and moving well before chasing load.</div>
+    </div>
+    <div class="tier-card fnd">
+      <div class="tier-name">Foundation Track</div>
+      <div class="tier-desc">Starting from the beginning or close to it. Movement quality over everything. Never chase another track's numbers — this track builds the base everything else runs on.</div>
+    </div>
+  </div>
+
+  <div class="callout knee">
+    <div class="callout-title">★ Knee Modification Protocol — For Anyone with Knee History</div>
+    <p>Regardless of track, if you have lingering knee pain or a prior injury, apply these additions to every Day A and Day C warm-up, and use substitutions marked <span class="badge badge-k">★ Knee Mod</span>:</p>
+    <ul>
+      <li><strong>Terminal Knee Extensions (TKE) with resistance band:</strong> 3×15 each leg — anchor band at knee height, step back for tension, gently press knee to full extension. Do these before any leg work.</li>
+      <li><strong>Quad Set Holds:</strong> Seated, rolled towel under knee, squeeze quad to press it down. Hold 5 sec × 10 reps.</li>
+      <li>Ice the knee 10–15 min post-session if it flares. Pain above 4/10 = stop and use the listed substitute.</li>
+    </ul>
+  </div>
+
+  <!-- PHASES -->
+  <div class="section-header"><div class="section-label">The Campaign</div><h2>Training Phases</h2></div>
+  <div class="phase-tabs">
+    <button class="phase-tab-btn active" data-phase="1" onclick="switchPhase(1)">Phase I<br><small>Foundation · Wk 1–6</small></button>
+    <button class="phase-tab-btn" data-phase="2" onclick="switchPhase(2)">Phase II<br><small>Build · Wk 7–14</small></button>
+    <button class="phase-tab-btn" data-phase="3" onclick="switchPhase(3)">Phase III<br><small>Peak · Wk 15–21</small></button>
+    <button class="phase-tab-btn" data-phase="4" onclick="switchPhase(4)">Phase IV<br><small>Taper · Wk 22–25</small></button>
+  </div>
+
+  <!-- ══════════ PHASE 1 ══════════ -->
+  <div class="phase-panel active" data-phase="1">
+    <div class="phase-header">
+      <div class="phase-weeks">Weeks 1–6 · May – mid June</div>
+      <h3>Phase I — Foundation</h3>
+      <div class="phase-goal">"Before you can fight for hours, you have to move without pain."</div>
+      <div class="phase-keys">
+        <span class="phase-key">Movement Quality</span><span class="phase-key">Joint &amp; Tendon Prep</span>
+        <span class="phase-key">Aerobic Base</span><span class="phase-key">Build the Habit</span>
+      </div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-header" onclick="toggleDay(this)">
+        <div class="day-title-group"><div class="day-letter">A</div><div>
+          <div class="day-title">The Anvil — Lower Body + Posterior Chain</div>
+          <div class="day-subtitle">Build legs and hips that don't quit in hour 4 of operations</div>
+        </div></div><div class="day-toggle">▶ EXPAND</div>
+      </div>
+      <div class="day-body">
+        <div class="warmup-block"><div class="warmup-label">Warm-Up · 5–7 min</div><ul>
+          <li>Leg swings front/back: 10 each leg</li><li>Hip circles: 10 each direction</li>
+          <li>Ankle circles: 10 each</li><li>Bodyweight glute bridge: 15 reps</li>
+          <li><strong>Knee mod:</strong> TKE 3×15 + Quad set holds ×10 before proceeding</li>
+        </ul></div>
+        <table class="ex-table">
+          <thead><tr><th>Exercise</th><th class="td-a">Advanced / Athlete Return</th><th class="td-i">Intermediate</th><th class="td-f">Foundation</th><th class="td-k">★ Knee Mod</th></tr></thead>
+          <tbody>
+            <tr><td><span class="ex-name">Goblet Squat</span><span class="ex-note">Priority #1 — depth and control above all</span></td><td class="td-a">4×12 moderate DB</td><td class="td-i">3×10 light–mod</td><td class="td-f">3×8 BW or very light</td><td class="td-k">Box Squat to bench — sit fully, stand controlled</td></tr>
+            <tr><td><span class="ex-name">Romanian Deadlift (RDL)</span><span class="ex-note">Hinge at hips, soft knee bend, weight close to legs</span></td><td class="td-a">4×10 mod–heavy</td><td class="td-i">3×10 moderate</td><td class="td-f">3×10 light DB</td><td class="td-k">Same — RDL is knee-friendly as written</td></tr>
+            <tr><td><span class="ex-name">Step-Ups (12–18" box)</span><span class="ex-note">Full hip extension at top; control the descent</span></td><td class="td-a">3×12 each leg, DBs</td><td class="td-i">3×10 each leg, BW</td><td class="td-f">3×8 each leg, BW</td><td class="td-k">Lower box; slow 3-count descent</td></tr>
+            <tr><td><span class="ex-name">Hip Thrust</span><span class="ex-note">Drive through heels; full glute squeeze at top</span></td><td class="td-a">4×15 weighted (BB or DB)</td><td class="td-i">3×12 BW or light</td><td class="td-f">3×10 BW</td><td class="td-k">Same — knee-sparing</td></tr>
+            <tr><td><span class="ex-name">Cossack Squat</span><span class="ex-note">Lateral mobility — essential for wide fighting stance on uneven terrain</span></td><td class="td-a">3×10 each side</td><td class="td-i">3×10 lateral step-out squat</td><td class="td-f">3×10 wide BW squat</td><td class="td-k">Lateral step only — no deep bend</td></tr>
+            <tr><td><span class="ex-name">Calf Raises</span><span class="ex-note">Use a step for full range. Ankle armor for forest terrain.</span></td><td class="td-a">3×20</td><td class="td-i">3×20</td><td class="td-f">3×15</td><td class="td-k">Same</td></tr>
+          </tbody>
+        </table>
+        <div class="cond-block"><div class="cond-label">Conditioning Finish · Zone 2 — conversational pace, can hold a full sentence</div><div class="cond-rows">
+          <div class="cond-row"><span class="badge badge-a">Advanced</span><span class="badge badge-r">Athlete Return</span> 20 min — row, bike, incline walk, or light jog</div>
+          <div class="cond-row"><span class="badge badge-i">Intermediate</span> 15 min Zone 2</div>
+          <div class="cond-row"><span class="badge badge-f">Foundation</span> 10–12 min brisk walk or light stationary bike</div>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-header" onclick="toggleDay(this)">
+        <div class="day-title-group"><div class="day-letter">B</div><div>
+          <div class="day-title">The Hammer — Upper Body + Two-Handed Weapon Mechanics</div>
+          <div class="day-subtitle">Build the pulling, pressing, and rotational foundation your weapon work runs on</div>
+        </div></div><div class="day-toggle">▶ EXPAND</div>
+      </div>
+      <div class="day-body">
+        <div class="warmup-block"><div class="warmup-label">Warm-Up · 5 min</div><ul>
+          <li>Band pull-aparts: 15 reps — arms straight, shoulders back</li>
+          <li>Arm circles: 10 each direction</li>
+          <li>Scapular push-ups (wall or floor): 10</li>
+          <li>Thoracic rotation: 5 slow reps each side — hands behind head, elbow to sky</li>
+          <li>Wrist circles and flexion/extension: 10 each</li>
+        </ul></div>
+        <table class="ex-table">
+          <thead><tr><th>Exercise</th><th class="td-a">Advanced / Athlete Return</th><th class="td-i">Intermediate</th><th class="td-f">Foundation</th></tr></thead>
+          <tbody>
+            <tr><td><span class="ex-name">Overhead Press (BB or DB)</span><span class="ex-note">Brace core through full range — trains the overhead extension of two-handed strikes</span></td><td class="td-a">4×10 moderate</td><td class="td-i">3×10 DB light–mod</td><td class="td-f">3×10 DB light or pike push-up</td></tr>
+            <tr><td><span class="ex-name">Bent-Over Row or Cable Row</span><span class="ex-note">Retract the scapula at top — this is your bow draw and weapon recovery strength</span></td><td class="td-a">4×10</td><td class="td-i">3×10 DB row</td><td class="td-f">3×10 seated cable or DB row</td></tr>
+            <tr><td><span class="ex-name">Push-Ups</span><span class="ex-note">Max reps — full lockout to chest touch every rep</span></td><td class="td-a">4×max (add vest if easily >20)</td><td class="td-i">3×max</td><td class="td-f">3×max (incline if needed)</td></tr>
+            <tr><td><span class="ex-name">Face Pulls or Band Pull-Aparts</span><span class="ex-note">⚠ ALL TRACKS SAME — every session, non-negotiable. Bows and two-handed weapons are brutal on the rotator cuff without this.</span></td><td class="td-a">3×20</td><td class="td-i">3×20</td><td class="td-f">3×20</td></tr>
+            <tr><td><span class="ex-name">DB Rotational Chop (high-to-low)</span><span class="ex-note">Both hands on one DB at shoulder height, rotate and drive down to opposite hip. This IS your two-handed strike pattern — treat it as a skill.</span></td><td class="td-a">3×10 each side, light–mod</td><td class="td-i">3×8 each side, light</td><td class="td-f">3×8 each side — begin with BW rotation to learn the movement</td></tr>
+            <tr><td><span class="ex-name">Farmer's Carry</span><span class="ex-note">Tall posture, packed shoulders. Grip and loaded carry base.</span></td><td class="td-a">4×50 yards challenging</td><td class="td-i">3×40 yards moderate</td><td class="td-f">3×30 yards light</td></tr>
+            <tr><td><span class="ex-name">Dead Hang</span><span class="ex-note">Hang from bar, shoulders packed. Grip endurance and lat activation.</span></td><td class="td-a">3×30–60 sec</td><td class="td-i">3×20–30 sec</td><td class="td-f">3×10–20 sec (or flex hang)</td></tr>
+            <tr><td><span class="ex-name">Wrist Roller or Plate Pinch</span><span class="ex-note">Two-handed weapons demand sustained grip endurance — work it directly</span></td><td class="td-a">3×30 sec</td><td class="td-i">2–3×20 sec</td><td class="td-f">2×15 sec</td></tr>
+          </tbody>
+        </table>
+        <div class="callout tip"><div class="callout-title">No Conditioning Finisher on Day B</div>Upper body and grip volume here is meaningful. A 10-minute easy walk is fine. Don't pile more on top.</div>
+      </div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-header" onclick="toggleDay(this)">
+        <div class="day-title-group"><div class="day-letter">C</div><div>
+          <div class="day-title">The Raid — Full Body Battle Circuit</div>
+          <div class="day-subtitle">Simulate what it feels like to sprint, strike, and keep fighting</div>
+        </div></div><div class="day-toggle">▶ EXPAND</div>
+      </div>
+      <div class="day-body">
+        <div class="warmup-block"><div class="warmup-label">Warm-Up · 5 min</div><ul>
+          <li>Light jog or jump rope: 2 min</li><li>Lateral shuffle: 10 yards each direction × 3</li>
+          <li>Arm swings and hip openers: 10 each</li><li>Thoracic rotation: 5 each side</li>
+          <li><strong>Knee mod:</strong> TKE 3×15 before proceeding</li>
+        </ul></div>
+        <div class="circuit-block">
+          <div class="circuit-title">Main Circuit — Advanced: 4 rounds · Intermediate: 3 rounds · Foundation: 3 rounds. Rest 90 sec (Adv/Return) / 2 min (Int/Fnd) between rounds.</div>
+          <div class="circuit-steps">
+            <div class="circuit-step"><div class="step-content"><span class="step-ex">KB or DB Swing</span><div class="step-tiers"><span class="badge badge-a">Adv/Return: KB swing 15</span><span class="badge badge-i">Int: DB swing 12</span><span class="badge badge-f">Fnd: DB deadlift 10</span></div></div></div>
+            <div class="circuit-step"><div class="step-content"><span class="step-ex">DB Rotational Chop — both directions</span><div class="step-tiers"><span class="badge badge-a">Adv/Return: 10 each way each side</span><span class="badge badge-i">Int: 8 each way, light</span><span class="badge badge-f">Fnd: 8 each side, one direction, BW rotation</span></div></div></div>
+            <div class="circuit-step"><div class="step-content"><span class="step-ex">Push-Up Variation</span><div class="step-tiers"><span class="badge badge-a">Adv/Return: 12 reps</span><span class="badge badge-i">Int: 10 reps</span><span class="badge badge-f">Fnd: 8 reps (incline if needed)</span></div></div></div>
+            <div class="circuit-step"><div class="step-content"><span class="step-ex">Box Jump or Step-Up</span><div class="step-tiers"><span class="badge badge-a">Adv/Return: Box jump 10</span><span class="badge badge-i">Int: Step-up 10</span><span class="badge badge-f">Fnd: Step-up 8</span><span class="badge badge-k">★ Knee: Step-up only, all tracks</span></div></div></div>
+            <div class="circuit-step"><div class="step-content"><span class="step-ex">Lateral Shuffle</span><div class="step-tiers"><span class="badge badge-a">Adv/Return: 20 yards each direction</span><span class="badge badge-i">Int: 15 yards</span><span class="badge badge-f">Fnd: 10 yards or lateral step-out</span></div></div></div>
+          </div>
+        </div>
+        <div class="cond-block"><div class="cond-label">Conditioning Finisher</div><div class="cond-rows">
+          <div class="cond-row"><span class="badge badge-a">Advanced</span><span class="badge badge-r">Athlete Return</span> 4×200m sprint — 90 sec rest between</div>
+          <div class="cond-row"><span class="badge badge-i">Intermediate</span> 3×100m at hard effort — 2 min rest</div>
+          <div class="cond-row"><span class="badge badge-f">Foundation</span> 4×30 sec brisk walk/jog intervals — 30 sec rest</div>
+        </div></div>
+      </div>
+    </div>
+  </div><!-- /P1 -->
+
+  <!-- ══════════ PHASE 2 ══════════ -->
+  <div class="phase-panel" data-phase="2">
+    <div class="phase-header">
+      <div class="phase-weeks">Weeks 7–14 · mid June – early August</div>
+      <h3>Phase II — Build</h3>
+      <div class="phase-goal">"Load the armor on. Get comfortable being uncomfortable."</div>
+      <div class="phase-keys">
+        <span class="phase-key">5–10% Weight Increase</span><span class="phase-key">Loaded Carry Begins</span>
+        <span class="phase-key">Heavier Rotational Work</span><span class="phase-key">Bow Draw Strength Added</span>
+        <span class="phase-key">Armor Sim from Week 10</span>
+      </div>
+    </div>
+    <div class="callout tip"><div class="callout-title">Phase 2 Key Changes</div><ul>
+      <li>Increase working weights 5–10% from Phase 1 top sets.</li>
+      <li><strong>Backpack carries begin on Day C:</strong> Load an old pack with 10–15 lbs (books, plates, sand). This is armor simulation.</li>
+      <li>Rotational chop gets heavier and more volume — it is a primary movement now, not an accessory.</li>
+      <li><strong>Bow draw strength added to Day B:</strong> Single-arm cable/band pull mimicking the draw. Both arms — the bow hand and the draw hand each need training.</li>
+      <li><strong>Athlete Return:</strong> Conditioning progresses from Intermediate pace to Advanced by end of Week 9 — not before, even if it feels easy.</li>
+    </ul></div>
+
+    <div class="day-block">
+      <div class="day-header" onclick="toggleDay(this)">
+        <div class="day-title-group"><div class="day-letter">A</div><div>
+          <div class="day-title">The Anvil — Lower Body + Loaded Carry</div>
+          <div class="day-subtitle">Heavier, deeper, and now you carry weight like you're armored up</div>
+        </div></div><div class="day-toggle">▶ EXPAND</div>
+      </div>
+      <div class="day-body">
+        <div class="warmup-block"><div class="warmup-label">Warm-Up · 7 min</div><ul>
+          <li>All Phase 1 warm-up movements</li>
+          <li>Add: Lateral band walk 10 steps each direction × 2 (band around ankles)</li>
+          <li><strong>Knee mod:</strong> TKE + Quad sets before proceeding</li>
+        </ul></div>
+        <table class="ex-table">
+          <thead><tr><th>Exercise</th><th class="td-a">Advanced / Athlete Return</th><th class="td-i">Intermediate</th><th class="td-f">Foundation</th><th class="td-k">★ Knee Mod</th></tr></thead>
+          <tbody>
+            <tr><td><span class="ex-name">Barbell Back Squat</span><span class="ex-note">Replaces goblet squat as primary</span></td><td class="td-a">4×8 mod–heavy</td><td class="td-i">3×8 moderate</td><td class="td-f">3×10 goblet squat (+5 lbs)</td><td class="td-k">Box squat to bench or leg press</td></tr>
+            <tr><td><span class="ex-name">Conventional Deadlift</span></td><td class="td-a">4×6 heavy</td><td class="td-i">3×8 moderate</td><td class="td-f">3×10 RDL light–moderate</td><td class="td-k">Same — knee-sparing</td></tr>
+            <tr><td><span class="ex-name">Bulgarian Split Squat</span><span class="ex-note">Rear foot on bench. Single-leg strength for uneven terrain.</span></td><td class="td-a">3×10 each leg, DBs</td><td class="td-i">3×8 each leg, BW</td><td class="td-f">Step-up 3×10 (continue Phase 1)</td><td class="td-k">Step-up only</td></tr>
+            <tr><td><span class="ex-name">Hip Thrust</span></td><td class="td-a">4×12 heavier load</td><td class="td-i">3×12 moderate</td><td class="td-f">3×12 BW</td><td class="td-k">Same</td></tr>
+            <tr><td><span class="ex-name">Loaded Backpack Carry</span><span class="ex-note">10–15 lbs. Erect posture, shoulders back. Armor prep.</span></td><td class="td-a">3×100 yards</td><td class="td-i">3×75 yards</td><td class="td-f">3×50 yards</td><td class="td-k">Same</td></tr>
+            <tr><td><span class="ex-name">Single-Leg Calf Raise</span><span class="ex-note">Progress from bilateral. Ankle stability for forest terrain.</span></td><td class="td-a">3×15 each leg</td><td class="td-i">3×12 each leg</td><td class="td-f">3×10 both legs on step</td><td class="td-k">Same</td></tr>
+          </tbody>
+        </table>
+        <div class="cond-block"><div class="cond-label">Conditioning Finish</div><div class="cond-rows">
+          <div class="cond-row"><span class="badge badge-a">Advanced</span> 25 min Zone 2 OR 20 min with 2× 1-min hard pushes</div>
+          <div class="cond-row"><span class="badge badge-r">Athlete Return</span> Wk 7–9: 20 min Zone 2 · Wk 10–14: match Advanced</div>
+          <div class="cond-row"><span class="badge badge-i">Intermediate</span> 20 min Zone 2</div>
+          <div class="cond-row"><span class="badge badge-f">Foundation</span> 15 min continuous movement — walk/jog intervals fine</div>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-header" onclick="toggleDay(this)">
+        <div class="day-title-group"><div class="day-letter">B</div><div>
+          <div class="day-title">The Hammer — Upper Body + Rotational Power + Bow Draw Strength</div>
+          <div class="day-subtitle">Heavier strikes, sharper pulls, the wrist endurance to keep swinging</div>
+        </div></div><div class="day-toggle">▶ EXPAND</div>
+      </div>
+      <div class="day-body">
+        <table class="ex-table">
+          <thead><tr><th>Exercise</th><th class="td-a">Advanced / Athlete Return</th><th class="td-i">Intermediate</th><th class="td-f">Foundation</th></tr></thead>
+          <tbody>
+            <tr><td><span class="ex-name">Push Press (BB or DB)</span><span class="ex-note">Replaces strict press. Full-body push mechanics — trains the drive behind an overhead two-handed strike.</span></td><td class="td-a">4×8 explosive</td><td class="td-i">3×8 DB push press</td><td class="td-f">3×10 DB strict press (progress to push press by Wk 12)</td></tr>
+            <tr><td><span class="ex-name">Weighted Pull-Up or Lat Pulldown</span><span class="ex-note">Lat strength is your bow draw and weapon recovery pull. Full range of motion.</span></td><td class="td-a">4×6–8 weighted</td><td class="td-i">3×10 lat pulldown</td><td class="td-f">3×10 seated cable or lat pulldown</td></tr>
+            <tr><td><span class="ex-name">Weighted Dips or Push-Up</span></td><td class="td-a">4×10–12</td><td class="td-i">3×10 push-up</td><td class="td-f">3×max push-up</td></tr>
+            <tr><td><span class="ex-name">Face Pulls</span><span class="ex-note">⚠ ALL TRACKS SAME — every session, every phase</span></td><td class="td-a">3×20</td><td class="td-i">3×20</td><td class="td-f">3×20</td></tr>
+            <tr><td><span class="ex-name">DB Rotational Chop — both directions</span><span class="ex-note">Now high-to-low AND low-to-high. Two-handed strikes go both directions. Add weight from Phase 1.</span></td><td class="td-a">4×10 each direction each side</td><td class="td-i">3×10 each direction</td><td class="td-f">3×8 each direction, light</td></tr>
+            <tr><td><span class="ex-name">★ NEW: Single-Arm Cable/Band Pull (Bow Draw Sim)</span><span class="ex-note">Stand sideways to anchor. Pull elbow back to full scapular retraction. Hold 1 sec. Train both arms — bow arm and draw arm each have a distinct role.</span></td><td class="td-a">3×12 each side</td><td class="td-i">3×12 each side, lighter</td><td class="td-f">3×10 each side, band only</td></tr>
+            <tr><td><span class="ex-name">★ NEW: Pallof Press</span><span class="ex-note">Anti-rotation core. Cable or band anchored to side — press straight out, hold 2 sec. Your core resists rotation while your arms work — exactly what two-handed combat demands.</span></td><td class="td-a">3×10 each side</td><td class="td-i">3×10 each side</td><td class="td-f">3×8 each side, band</td></tr>
+            <tr><td><span class="ex-name">Dead Hang + Wrist Roller</span></td><td class="td-a">3×45 sec + 3 sets wrist roller</td><td class="td-i">3×30 sec + 2 sets</td><td class="td-f">3×20 sec + plate pinch 2 sets</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-header" onclick="toggleDay(this)">
+        <div class="day-title-group"><div class="day-letter">C</div><div>
+          <div class="day-title">The Raid — Battle Circuit with Armor Load</div>
+          <div class="day-subtitle">Week 10+: The backpack goes on and stays on for the full circuit</div>
+        </div></div><div class="day-toggle">▶ EXPAND</div>
+      </div>
+      <div class="day-body">
+        <div class="callout warn"><div class="callout-title">Armor Load Schedule — Day C</div>Advanced/Athlete Return: pack starts Week 9. Intermediate: Week 10. Foundation: Week 12. Once the pack is on, it stays on for the entire circuit.</div>
+        <div class="circuit-block">
+          <div class="circuit-title">Main Circuit — Advanced: 5 rounds · Intermediate: 4 rounds · Foundation: 3 rounds. Rest 90 sec / 2 min between rounds.</div>
+          <div class="circuit-steps">
+            <div class="circuit-step"><div class="step-content"><span class="step-ex">KB/DB Swing</span><div class="step-tiers"><span class="badge badge-a">Adv/Return: KB swing 15–20</span><span class="badge badge-i">Int: DB swing 15</span><span class="badge badge-f">Fnd: DB deadlift 12</span></div></div></div>
+            <div class="circuit-step"><div class="step-content"><span class="step-ex">DB Rotational Chop — both directions</span><div class="step-tiers"><span class="badge badge-a">Adv/Return: 8 each way each side</span><span class="badge badge-i">Int: 6 each way</span><span class="badge badge-f">Fnd: 6 each side, one direction</span></div></div></div>
+            <div class="circuit-step"><div class="step-content"><span class="step-ex">Burpee</span><div class="step-tiers"><span class="badge badge-a">Adv/Return: 8 full</span><span class="badge badge-i">Int: 6</span><span class="badge badge-f">Fnd: 5 step-back (no jump)</span><span class="badge badge-k">★ Knee: Step-back, all tracks</span></div></div></div>
+            <div class="circuit-step"><div class="step-content"><span class="step-ex">Box Jump or Step-Up</span><div class="step-tiers"><span class="badge badge-a">Adv/Return: 10 box jumps</span><span class="badge badge-i">Int: 10 step-ups</span><span class="badge badge-f">Fnd: 8 step-ups</span><span class="badge badge-k">★ Knee: Step-up, all tracks</span></div></div></div>
+            <div class="circuit-step"><div class="step-content"><span class="step-ex">Lateral Shuffle</span><div class="step-tiers"><span class="badge badge-a">Adv/Return: 20 yards each way</span><span class="badge badge-i">Int: 15 yards</span><span class="badge badge-f">Fnd: 10 yards</span></div></div></div>
+            <div class="circuit-step"><div class="step-content"><span class="step-ex">Farmer's Carry</span><div class="step-tiers"><span class="badge badge-a">Adv/Return: 40 yards heavy</span><span class="badge badge-i">Int: 30 yards moderate</span><span class="badge badge-f">Fnd: 20 yards light</span></div></div></div>
+          </div>
+        </div>
+        <div class="cond-block"><div class="cond-label">Conditioning Finisher</div><div class="cond-rows">
+          <div class="cond-row"><span class="badge badge-a">Advanced</span><span class="badge badge-r">Athlete Return</span> 5×200m sprint — 60 sec rest</div>
+          <div class="cond-row"><span class="badge badge-i">Intermediate</span> 4×100m hard — 90 sec rest</div>
+          <div class="cond-row"><span class="badge badge-f">Foundation</span> 3×60 sec intervals — 90 sec rest</div>
+        </div></div>
+      </div>
+    </div>
+  </div><!-- /P2 -->
+
+  <!-- ══════════ PHASE 3 ══════════ -->
+  <div class="phase-panel" data-phase="3">
+    <div class="phase-header">
+      <div class="phase-weeks">Weeks 15–21 · August – mid September</div>
+      <h3>Phase III — Peak</h3>
+      <div class="phase-goal">"You're not just getting fit. You're becoming a Raider."</div>
+      <div class="phase-keys">
+        <span class="phase-key">Maximum Strength Expression</span><span class="phase-key">Full Armor Simulation</span>
+        <span class="phase-key">Sustained Ops Circuits</span><span class="phase-key">Battle Conditioning Finisher</span>
+        <span class="phase-key">3-Day Endurance Prep</span>
+      </div>
+    </div>
+    <div class="callout tip"><div class="callout-title">Phase 3 Key Changes</div><ul>
+      <li>Backpack weight increases to 15–20 lbs. Foundation track stays at 10–15 lbs through Week 18.</li>
+      <li>Weeks 19–21: wear actual gambeson or partial kit on Day C if available. If not, backpack at full weight.</li>
+      <li>The Sustained Ops Circuit mimics the full demand of a battle-day operation block.</li>
+      <li>New <strong>Battle Conditioning Finisher</strong> added — burst-and-recover pattern that directly mirrors the raider engagement cycle.</li>
+      <li>Day A conditioning is now done with the backpack on.</li>
+    </ul></div>
+
+    <div class="day-block">
+      <div class="day-header" onclick="toggleDay(this)">
+        <div class="day-title-group"><div class="day-letter">A</div><div>
+          <div class="day-title">The Anvil — Heavy Lower Body + Armored Conditioning</div>
+          <div class="day-subtitle">Maximum strength expression. Carry weight like you mean it.</div>
+        </div></div><div class="day-toggle">▶ EXPAND</div>
+      </div>
+      <div class="day-body">
+        <table class="ex-table">
+          <thead><tr><th>Exercise</th><th class="td-a">Advanced / Athlete Return</th><th class="td-i">Intermediate</th><th class="td-f">Foundation</th><th class="td-k">★ Knee Mod</th></tr></thead>
+          <tbody>
+            <tr><td><span class="ex-name">Barbell Back Squat</span></td><td class="td-a">5×5 heavy</td><td class="td-i">4×6 mod–heavy</td><td class="td-f">4×8 moderate</td><td class="td-k">Leg press or box squat to parallel</td></tr>
+            <tr><td><span class="ex-name">Conventional Deadlift</span></td><td class="td-a">4×5 heavy</td><td class="td-i">4×6 mod–heavy</td><td class="td-f">3×8 moderate</td><td class="td-k">Same — knee-safe</td></tr>
+            <tr><td><span class="ex-name">Walking Lunge (weighted)</span><span class="ex-note">Long stride, upright torso. This is how you move through a forest.</span></td><td class="td-a">3×16 steps DBs</td><td class="td-i">3×12 steps DB</td><td class="td-f">3×10 steps BW</td><td class="td-k">Step-up 3×12 same weight</td></tr>
+            <tr><td><span class="ex-name">Hip Thrust</span></td><td class="td-a">4×10 heavy (BB)</td><td class="td-i">3×12 moderate</td><td class="td-f">3×12 BW or light</td><td class="td-k">Same</td></tr>
+            <tr><td><span class="ex-name">Loaded Backpack Carry</span><span class="ex-note">Adv/Return: 15–20 lbs · Foundation: 10–15 lbs</span></td><td class="td-a">3×150 yards</td><td class="td-i">3×100 yards</td><td class="td-f">3×75 yards</td><td class="td-k">Same</td></tr>
+            <tr><td><span class="ex-name">Single-Leg RDL</span></td><td class="td-a">3×10 each weighted</td><td class="td-i">3×8 each DB</td><td class="td-f">3×8 bilateral RDL</td><td class="td-k">Bilateral RDL only</td></tr>
+          </tbody>
+        </table>
+        <div class="cond-block"><div class="cond-label">Conditioning — backpack ON from Wk 15 (Adv/Return) · Wk 16 (Int) · Wk 18 (Fnd)</div><div class="cond-rows">
+          <div class="cond-row"><span class="badge badge-a">Advanced</span><span class="badge badge-r">Athlete Return</span> 30 min Zone 2 with backpack</div>
+          <div class="cond-row"><span class="badge badge-i">Intermediate</span> 25 min Zone 2 light pack</div>
+          <div class="cond-row"><span class="badge badge-f">Foundation</span> 20 min brisk walk 10–15 lb pack</div>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-header" onclick="toggleDay(this)">
+        <div class="day-title-group"><div class="day-letter">B</div><div>
+          <div class="day-title">The Hammer — Max Upper Body + Heavy Two-Handed and Draw Work</div>
+          <div class="day-subtitle">The back that draws the bow. The body that swings the axe all day.</div>
+        </div></div><div class="day-toggle">▶ EXPAND</div>
+      </div>
+      <div class="day-body">
+        <table class="ex-table">
+          <thead><tr><th>Exercise</th><th class="td-a">Advanced / Athlete Return</th><th class="td-i">Intermediate</th><th class="td-f">Foundation</th></tr></thead>
+          <tbody>
+            <tr><td><span class="ex-name">Push Press</span></td><td class="td-a">5×5 heavy</td><td class="td-i">4×6 DB push press</td><td class="td-f">3×8 DB push press</td></tr>
+            <tr><td><span class="ex-name">Weighted Pull-Up</span></td><td class="td-a">4×6 weighted</td><td class="td-i">3×max pull-up or lat pulldown ×10</td><td class="td-f">Assisted pull-up or lat pulldown 3×10</td></tr>
+            <tr><td><span class="ex-name">Weighted Dips</span></td><td class="td-a">4×12 weighted</td><td class="td-i">3×10 BW dips or push-up</td><td class="td-f">3×max push-up</td></tr>
+            <tr><td><span class="ex-name">Face Pulls</span><span class="ex-note">⚠ ALL TRACKS — every session, every phase</span></td><td class="td-a">3×20</td><td class="td-i">3×20</td><td class="td-f">3×20</td></tr>
+            <tr><td><span class="ex-name">Heavy DB Rotational Chop — both directions</span><span class="ex-note">Heavier than Phase 2. Full control through entire range.</span></td><td class="td-a">4×12 each direction each side</td><td class="td-i">3×10 each direction</td><td class="td-f">3×8 each direction</td></tr>
+            <tr><td><span class="ex-name">Single-Arm Cable Pull (Bow Draw Sim)</span><span class="ex-note">Heavier than Phase 2. 2 sec retraction hold.</span></td><td class="td-a">4×10 each side, heavier</td><td class="td-i">3×10 each side</td><td class="td-f">3×10 each side, band</td></tr>
+            <tr><td><span class="ex-name">Pallof Press (heavier)</span></td><td class="td-a">3×12 each side, 2 sec hold</td><td class="td-i">3×10 each side</td><td class="td-f">3×8 each side</td></tr>
+            <tr><td><span class="ex-name">Heavy Farmer's Carry</span></td><td class="td-a">4×75 yards max manageable</td><td class="td-i">3×60 yards</td><td class="td-f">3×50 yards</td></tr>
+            <tr><td><span class="ex-name">Dead Hang + Wrist Roller</span></td><td class="td-a">3×60 sec + 3 sets</td><td class="td-i">3×45 sec + 2 sets</td><td class="td-f">3×30 sec + plate pinch</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-header" onclick="toggleDay(this)">
+        <div class="day-title-group"><div class="day-letter">C</div><div>
+          <div class="day-title">The Raid — Sustained Ops Circuit</div>
+          <div class="day-subtitle">Wear your armor. This is what battle day actually feels like.</div>
+        </div></div><div class="day-toggle">▶ EXPAND</div>
+      </div>
+      <div class="day-body">
+        <div class="callout warn"><div class="callout-title">Armor Sim Protocol</div>Weeks 15–18: Backpack 15–20 lbs for full session. Weeks 19–21: wear actual gambeson + partial kit if available. If not, backpack at full weight.</div>
+        <div class="circuit-block">
+          <div class="circuit-title">Sustained Ops Circuit — Advanced: 6 rounds · Intermediate: 5 rounds · Foundation: 4 rounds. Rest 90 sec / 2 min.</div>
+          <div class="circuit-steps">
+            <div class="circuit-step"><div class="step-content"><span class="step-ex">KB/DB Swing</span><div class="step-tiers"><span class="badge badge-a">Adv/Return: 20</span><span class="badge badge-i">Int: 15</span><span class="badge badge-f">Fnd: 12</span></div></div></div>
+            <div class="circuit-step"><div class="step-content"><span class="step-ex">DB Rotational Chop — both directions</span><div class="step-tiers"><span class="badge badge-a">Adv/Return: 8 each way each side</span><span class="badge badge-i">Int: 6 each way</span><span class="badge badge-f">Fnd: 6 each side, one direction</span></div></div></div>
+            <div class="circuit-step"><div class="step-content"><span class="step-ex">Burpee or Step-Back Burpee</span><div class="step-tiers"><span class="badge badge-a">Adv/Return: 10 full</span><span class="badge badge-i">Int: 8</span><span class="badge badge-f">Fnd: 6 step-back</span><span class="badge badge-k">★ Knee: Step-back, all tracks</span></div></div></div>
+            <div class="circuit-step"><div class="step-content"><span class="step-ex">Box Jump or Step-Up</span><div class="step-tiers"><span class="badge badge-a">Adv/Return: 10 box jumps</span><span class="badge badge-i">Int: 10 step-ups</span><span class="badge badge-f">Fnd: 8 step-ups</span><span class="badge badge-k">★ Knee: Step-up, all tracks</span></div></div></div>
+            <div class="circuit-step"><div class="step-content"><span class="step-ex">Lateral Shuffle</span><div class="step-tiers"><span class="badge badge-a">Adv/Return: 20 yards</span><span class="badge badge-i">Int: 15 yards</span><span class="badge badge-f">Fnd: 10 yards</span></div></div></div>
+            <div class="circuit-step"><div class="step-content"><span class="step-ex">Farmer's Carry</span><div class="step-tiers"><span class="badge badge-a">Adv/Return: 40 yards heavy</span><span class="badge badge-i">Int: 30 yards moderate</span><span class="badge badge-f">Fnd: 20 yards light</span></div></div></div>
+          </div>
+        </div>
+        <div class="cond-block"><div class="cond-label">★ Battle Conditioning Finisher — 3 rounds, all tracks</div>
+          <p style="font-size:0.88rem; margin-bottom:0.7rem; color:var(--text-dim); font-style:italic;">Mimics the raider burst-and-recover engagement cycle. Run it still in your kit.</p>
+          <div class="cond-rows"><div class="cond-row" style="flex-direction:column; align-items:flex-start; gap:0.25rem;">
+            <span>→ 30 sec MAX effort (sprint, row, or bike)</span>
+            <span>→ 30 sec rest</span>
+            <span>→ 30 sec medium effort (70%)</span>
+            <span>→ 60 sec rest</span>
+            <span style="color:var(--text-dim); font-size:0.82rem; font-style:italic;">Repeat 3 rounds. Rest 2 min between full rounds.</span>
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /P3 -->
+
+  <!-- ══════════ PHASE 4 ══════════ -->
+  <div class="phase-panel" data-phase="4">
+    <div class="phase-header">
+      <div class="phase-weeks">Weeks 22–25 · late September – October 23</div>
+      <h3>Phase IV — Taper</h3>
+      <div class="phase-goal">"Sharpen the blade, don't dull it. Arrive fresh. Arrive sharp."</div>
+      <div class="phase-keys">
+        <span class="phase-key">Cut Volume 40–50%</span><span class="phase-key">Hold Intensity</span>
+        <span class="phase-key">Sleep &amp; Recovery Priority</span><span class="phase-key">No New Movements</span>
+      </div>
+    </div>
+    <div class="callout warn"><div class="callout-title">The Most Common Taper Mistake</div>
+      <p>The temptation to push harder in the final weeks is real — especially on the Advanced track. Resist it. Fitness gains from a hard session now will not arrive before the event. The damage can. This phase is about arriving healthy.</p>
+    </div>
+    <div class="day-block">
+      <div class="day-header" onclick="toggleDay(this)">
+        <div class="day-title-group"><div class="day-letter">⟶</div><div>
+          <div class="day-title">Taper Protocol — All Tracks</div>
+          <div class="day-subtitle">Week-by-week reduction schedule</div>
+        </div></div><div class="day-toggle">▶ EXPAND</div>
+      </div>
+      <div class="day-body">
+        <table class="taper-table">
+          <thead><tr><th>Weeks</th><th>Frequency</th><th>Volume</th><th>Intensity</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td><strong>22–23</strong></td><td>3 days/week</td><td style="color:var(--p3);">60% of Phase 3</td><td>Same weights — hold the load</td><td>Cut sets, not reps per set. Skip all conditioning finishers.</td></tr>
+            <tr><td><strong>24</strong></td><td>2 days/week</td><td style="color:var(--ret);">50% of Phase 3</td><td>Same weights</td><td>Day A + Day B only. Skip Day C. Focus on mobility and sleep.</td></tr>
+            <tr><td><strong>25 (Event Week)</strong></td><td>1 session early week</td><td style="color:var(--knee);">30% — movement only</td><td>Light — just moving</td><td>One full-body session Mon/Tue. Then rest, eat, sleep, and show up ready.</td></tr>
+          </tbody>
+        </table>
+        <div class="callout tip"><div class="callout-title">Taper Week Priorities</div><ul>
+          <li><strong>Sleep:</strong> 8+ hours. Worth more than any session.</li>
+          <li><strong>Hydration:</strong> Pre-load in the 24 hours before event day. Armor in October South Carolina heat will dehydrate you faster than you think.</li>
+          <li><strong>Food:</strong> Eat protein and carbs normally. This is not the time to cut. You need fuel reserves.</li>
+          <li><strong>Mobility:</strong> Replace skipped sessions with 15–20 min of light stretching or foam rolling.</li>
+          <li><strong>Don't:</strong> Test maxes, introduce new movements, or try to catch up on missed training.</li>
+          <li><strong>Event weekend:</strong> Bring real food. High protein, easy carbs. Don't rely on a food truck for 5-hour battle days.</li>
+        </ul></div>
+      </div>
+    </div>
+  </div><!-- /P4 -->
+
+  <!-- ARMOR SCHEDULE -->
+  <div class="section-header"><div class="section-label">Battle Prep</div><h2>Armor Load Simulation Schedule</h2></div>
+  <p style="margin-bottom:1.2rem; color:var(--text-dim);">You cannot simulate combat in armor without training in armor. This schedule progressively introduces pack weight so your body adapts before event day. <strong style="color:var(--text);">An old backpack loaded with books or plates is all you need.</strong></p>
+  <div class="armor-timeline">
+    <div class="armor-row"><div class="armor-weeks">Weeks 1–9</div><div class="armor-bar-wrap"><div class="armor-bar-fill ab0">Bodyweight Only</div></div></div>
+    <div class="armor-row"><div class="armor-weeks">Weeks 10–14</div><div class="armor-bar-wrap"><div class="armor-bar-fill ab2">10–15 lbs Pack · Day C only</div></div></div>
+    <div class="armor-row"><div class="armor-weeks">Weeks 15–18</div><div class="armor-bar-wrap"><div class="armor-bar-fill ab3">15–20 lbs · Day C + Day A conditioning</div></div></div>
+    <div class="armor-row"><div class="armor-weeks">Weeks 19–21</div><div class="armor-bar-wrap"><div class="armor-bar-fill ab4">Actual Kit on Day C if possible</div></div></div>
+  </div>
+  <div class="callout knee"><div class="callout-title">Foundation Track — Armor Load Delay</div>Foundation track delays the above by 3 weeks. No pack before Week 13. Cap at 10–15 lbs through all of Phase 3.</div>
+
+  <!-- SPECIAL PROTOCOLS -->
+  <div class="section-header"><div class="section-label">Commander's Notes</div><h2>Special Protocols</h2></div>
+
+  <div class="special-notes">
+    <div class="special-notes-header">⚓ Athlete Return Track — Managing the Comeback</div>
+    <div class="special-notes-body">
+      <p>Strong athletic background means the strength ceiling comes back fast — faster than it should feel safe. The trap is running conditioning at the same pace.</p>
+      <ul>
+        <li><strong>Strength:</strong> Match the Advanced track from Week 1. This is appropriate.</li>
+        <li><strong>Conditioning:</strong> Start at Intermediate pace. Progress to Advanced by Week 10 — not before, even when it feels easy. Connective tissue adapts slower than your cardiovascular system will let you believe.</li>
+        <li><strong>Watch for:</strong> Patellar tendon and lower back overuse signals from sudden volume increase. Any pain above 3/10 that persists two or more days = back off.</li>
+        <li><strong>Disrupted sleep:</strong> On consistently short-sleep nights (new parent, shift work), scale back Day C intensity specifically. Don't skip — just don't push hard on 4 hours of sleep.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="special-notes">
+    <div class="special-notes-header">⚓ Foundation Track — The Most Important Rules</div>
+    <div class="special-notes-body">
+      <p>This track has the most to gain and the most to protect. Progress is built on consistency and quality — not speed.</p>
+      <ul>
+        <li><strong>Rule 1:</strong> Never miss two sessions in a row. Missing one is life. Missing two is losing momentum.</li>
+        <li><strong>Rule 2:</strong> The correct weight is the one that lets you finish all reps with good form. Not the weight someone else is using.</li>
+        <li><strong>Milestone check-ins:</strong> Week 6, Week 14, Week 20. Compare to your own baseline — not anyone else's.</li>
+        <li><strong>The goal:</strong> Arrive at the event able to move in armor for 3 days without getting hurt. That is a complete victory.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- EQUIPMENT -->
+  <div class="section-header"><div class="section-label">Kit List</div><h2>Equipment — Budget-Conscious</h2></div>
+  <p style="margin-bottom:1rem; color:var(--text-dim);">Everything runs on gym access, dumbbells/kettlebells, and a barbell with rack. Two inexpensive additions make a meaningful difference.</p>
+  <div class="equip-grid">
+    <div class="equip-card"><div class="equip-category">Already Have ✓</div><ul>
+      <li>Barbell + Rack <span class="equip-price">✓</span></li>
+      <li>Dumbbells / Kettlebells <span class="equip-price">✓</span></li>
+      <li>Gym Membership <span class="equip-price">✓</span></li>
+      <li>Old Backpack (armor sim) <span class="equip-price">✓ or free</span></li>
+      <li>Pull-Up Bar (at gym) <span class="equip-price">✓</span></li>
+    </ul></div>
+    <div class="equip-card"><div class="equip-category">Budget Adds (~$10–20)</div><ul>
+      <li>Resistance Bands (set of 3) <span class="equip-price">$10–15</span></li>
+      <li class="note">Covers TKEs, pull-aparts, bow draw simulation, and warm-up work. The highest value add in the entire program.</li>
+    </ul></div>
+    <div class="equip-card"><div class="equip-category">Nice-to-Have (Not Required)</div><ul>
+      <li>Weight Vest (10–20 lbs) <span class="equip-price">$40–80</span></li>
+      <li class="note">More realistic than a backpack for armor simulation. If one person in the group has one, rotate it for Day C sessions.</li>
+    </ul></div>
+  </div>
+
+</div><!-- /container -->
+
+<footer class="site-footer">
+  <div class="footer-crest">⚓</div>
+  <div>Salt Marsh Marauders · Sea Lords · Weekend Warrior: Olaran · Oct 23–25, 2026</div>
+  <div style="margin-top:0.4rem; opacity:0.5; font-style:italic;">Train hard. Fight smart. Leave nothing on the field.</div>
+</footer>
+
+<script>
+  function switchPhase(n) {
+    document.querySelectorAll('.phase-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.phase-tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector('.phase-panel[data-phase="'+n+'"]').classList.add('active');
+    document.querySelector('.phase-tab-btn[data-phase="'+n+'"]').classList.add('active');
+  }
+  function toggleDay(header) {
+    const body = header.nextElementSibling;
+    const toggle = header.querySelector('.day-toggle');
+    const isOpen = body.classList.contains('open');
+    body.classList.toggle('open', !isOpen);
+    toggle.textContent = isOpen ? '▶ EXPAND' : '▼ COLLAPSE';
+  }
+  document.querySelectorAll('.phase-panel.active .day-body').forEach((b,i) => {
+    if (i===0) { b.classList.add('open'); const t=b.previousElementSibling.querySelector('.day-toggle'); if(t) t.textContent='▼ COLLAPSE'; }
+  });
+</script>
+</body>
+</html>
